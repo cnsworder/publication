@@ -3,7 +3,7 @@
 kernel stable:3.12.5  
 本期编辑：江湖郎中
 
-很荣幸的向各位Linux开发QQ群的成员宣布《Linux Developer》第alpha期发布了！    
+很荣幸的向各位Linux开发QQ群的成员宣布《Linux Developer》第alpha1期发布了！    
 本期专题：Archlinux安装
 --------
 作者：[__猫猫__](#成员推荐)  
