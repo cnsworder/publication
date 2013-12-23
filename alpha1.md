@@ -6,7 +6,7 @@ kernel stable:3.12.5
 很荣幸的向各位Linux开发QQ群的成员宣布《Linux Developer》第**alpha1**期发布了！    
 本期专题：Archlinux安装
 --------
-![Archlinux](http://zh.wikipedia.org/wiki/File:ArchlinuxLogo.png)
+![Archlinux](http://distrowatch.com/images/yvzhuwbpy/arch.png)  
 作者：[__猫猫__](#成员推荐)  
 #### [为了自由的名义](http://www.wangxiaomao.net/?p=734)  
 > 在一个应该考虑晚上吃蹄花还是羊肉汤的时候，郎中在小窗口里说让我做第一期订阅的掌勺，我勒个去，亚历山大啊。不过，这样安排也是有一定道理的，按年龄来的呗……  
