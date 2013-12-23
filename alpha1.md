@@ -72,7 +72,7 @@ fi
 成员推荐
 --------
 <a name="mm"></a>
-![Photo](http://)  
+![Photo](http://www.wangxiaomao.net/mdphoto.png)  
 网名：猫猫  
 群ID：[济南]猫猫  
 主页：<http://www.wangxiaomao.net>  
