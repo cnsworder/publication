@@ -1,9 +1,16 @@
-![Linux](https://www.kernel.org/theme/images/logos/tux.png)Linux Developer
+![GNU/Linux](https://www.kernel.org/theme/images/logos/tux.png)GNU/Linux Developer
 ======
 kernel stable:3.12.5  
 本期编辑：江湖郎中
 
-很荣幸的向各位Linux开发QQ群的成员宣布《Linux Developer》第**alpha1**期发布了！    
+
+很荣幸的向各位Linux开发QQ群的成员宣布《GNU/Linux Developer》第**alpha1**期发布了！    
+我曾怀着虔诚的心朝拜[GNU](http://www.gnu.org)神圣殿堂，它的光芒始终照耀着我前行。  
+自由软件与开源软件是为了更好的尊重我们的劳动成果，消除版权所保护所不能适应的更迅速发展的软件行业的一种机制，通过适当的条款来保护合作与分享，这正在形成一种社会化开发的新趋势。[编程一小时](http://code.org/)更促使社会化开发的范围由[github](http://www.github.com)等code群体扩展为整个社会群体的行为，商业软件行为本身没有错误，只是原有的开发模式已经不适应未来的发展趋势。  
+自由/开源不等于免费，参与你所使用的软件的开发，为你使用的软件贡献代码、捐赠或付费，尊重授权协议，尊重我们共同的劳动成果。  
+
+
+
 本期专题：Archlinux安装
 --------
 ![Archlinux](http://distrowatch.com/images/yvzhuwbpy/arch.png)  
@@ -81,4 +88,5 @@ fi
 - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
 如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha1.md)。
+我们在github上开放编辑希望大家能参与到其中。
 
