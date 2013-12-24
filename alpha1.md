@@ -1,7 +1,7 @@
 ![GNU/Linux](https://www.kernel.org/theme/images/logos/tux.png)GNU/Linux Developer
 ======
 kernel stable:3.12.5  
-QQ群号：20506135
+QQ群号：20506135  
 本期编辑：江湖郎中
 
 
@@ -88,6 +88,6 @@ fi
 简介：别人以为我是只企鹅，可是我希望自己做只猫
 - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
-如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha1.md)或[网站](http://ssh.cnsworder.com)。
+如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha1.md)或[网站](http://ssh.cnsworder.com)。  
 我们在github上开放编辑希望大家能参与到其中。
 
