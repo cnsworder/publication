@@ -12,4 +12,4 @@
 
 QQ群：20506135  
 微信号：linux_developer [Linux开发]  
-!(微信)[image/weixin.jpg]
+![微信](image/weixin.jpg)
