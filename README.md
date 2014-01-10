@@ -11,3 +11,4 @@
 9. 开放编辑，托管在github上
 
 QQ群：20506135
+微信号：linux_developer [Linux开发]
