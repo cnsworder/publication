@@ -10,5 +10,6 @@
 8. 成员推荐，推荐明星群成员
 9. 开放编辑，托管在github上
 
-QQ群：20506135
-微信号：linux_developer [Linux开发]
+QQ群：20506135  
+微信号：linux_developer [Linux开发]  
+!(微信)[image/weixin.jpg]
