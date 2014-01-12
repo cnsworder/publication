@@ -1,7 +1,7 @@
 ![Tux](https://www.kernel.org/theme/images/logos/tux.png)  
 GNU/Linux Developer
 ===========================
-**Aplha2**
+**Aplha2**  
 **kernel stable:3.12.7**  
 **QQ群号：20506135**  
 **微信号：linux_developer**  
