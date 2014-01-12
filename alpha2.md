@@ -58,7 +58,7 @@ def sim_distance(prefs,person1,person2):
 ```
 
 运行下面的结果得到 
-> `print sim_distance(perfers,"Tom","Jackson")`
+> `print sim_distance(perfers,"Tom","Jackson")`  
 > `0.294298055086`
 
 欧几里得距离评价法是一种比较简单的方法。但是由于存在一些用户总是倾向于》》评分过高或过低（相对平均值），
@@ -91,7 +91,7 @@ def sim_pearson(prefer, person1, person2):
 ```
 
 **测试下**
-> print sim_pearson(perfers,"Tom","Jackson")
+> print sim_pearson(perfers,"Tom","Jackson")  
 > 0.396059017191
 
 看到了吧，通过上述的方式我们可以计算出一个两个用户之间的相似度（也就是对同一种东西的看法的相似度，那所谓的推荐系统是不是呼之欲出了呢）
@@ -110,12 +110,12 @@ def topMatches(prefs,person,n=5,similarity=sim_pearson):
     return scores[0:n] 
 ```
 #测试下	
-> print topMatches(perfers,"Tom")
+> print topMatches(perfers,"Tom")  
 > print topMatches(perfers,"Jack")  
 
 哈哈，你们看到Jack跟Tom不愧是一对好基友吧。。。  
 
-> [(0.9912407071619299, 'Jack'), (0.7470178808339965, 'Angelia'), (0.5940885257860044, 'Aimee'), (0.5669467095138396, 'Abby'), (0.40451991747794525, 'Scotte')]
+> [(0.9912407071619299, 'Jack'), (0.7470178808339965, 'Angelia'), (0.5940885257860044, 'Aimee'), (0.5669467095138396, 'Abby'), (0.40451991747794525, 'Scotte')]  
 > [(0.9912407071619299, 'Tom'), (0.9244734516419049, 'Aimee'), (0.8934051474415647, 'Abby'), (0.66284898035987, 'Angelia'), (0.38124642583151164, 'Jackson')]
 
 那接下来，进入最后一步了，请问，我想得到推荐给Tom的东西要怎么做。。。
@@ -143,9 +143,9 @@ def getRecommendations(prefs,person,similarity=sim_pearson):
     return rankings
 ```
 #测试下。。
-> print getRecommendations(perfers,"Tom")
-> print getRecommendations(perfers,"Jack")
-> []
+> print getRecommendations(perfers,"Tom")  
+> print getRecommendations(perfers,"Jack")  
+> []  
 > [(3.3477895267131013, 'Movie6'), (2.832549918264162, 'Movie1'), (2.530980703765565, 'Movie3')]  
 
 这个时候因为Tom已经看过所有的电影了，，，所以没得推荐了。。。
