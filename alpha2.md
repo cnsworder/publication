@@ -1,9 +1,10 @@
 ![Tux](https://www.kernel.org/theme/images/logos/tux.png)  
 GNU/Linux Developer
 ===========================
+**Aplha2**
 **kernel stable:3.12.7**  
 **QQ群号：20506135**  
-**微信号：linux_developer**
+**微信号：linux_developer**  
 **本期编辑：唯一**  
 
 很惭愧的，被**猫猫**给坑了，让我一个半桶水的家伙，跟大家分享个挺好玩的东西。尽管不是挺深入，但是绝对够科普。
