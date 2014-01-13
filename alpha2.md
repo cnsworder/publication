@@ -109,7 +109,7 @@ def topMatches(prefs,person,n=5,similarity=sim_pearson):
     scores.reverse()
     return scores[0:n] 
 ```
-#测试下	
+**测试下**  	
 > print topMatches(perfers,"Tom")  
 > print topMatches(perfers,"Jack")  
 
@@ -142,7 +142,7 @@ def getRecommendations(prefs,person,similarity=sim_pearson):
     rankings.reverse()
     return rankings
 ```
-#测试下。。
+**测试下** 
 > print getRecommendations(perfers,"Tom")  
 > print getRecommendations(perfers,"Jack")  
 > []  
@@ -198,7 +198,7 @@ def send_mail():
 <a name="tj"></a>
 ![Photo]()  
 网名：  
-群ID: []   
+群ID: [广州]唯一   
 主页：<http://>  
 技术：   
 简介：  
