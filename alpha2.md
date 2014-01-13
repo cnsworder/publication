@@ -157,15 +157,40 @@ def getRecommendations(prefs,person,similarity=sim_pearson):
 ----------
 《集体智慧编程》：该书完全使用简单易用的python语言描述，为入门者简直是揭开了一层朦胧的面纱。本人也是其中的受益者，所以有兴趣的可以先阅读本书。  
 另外专题中用到的代码和讲解内容也是来自于此书。  
-**pythonxy** ：一个集成了很多科学计算工具的python版本。本专题的代码虽然都是自己实现，但是也可以通过scipy库中的一些封装好的函数库去实现。其实现更加合理科学。  
- [pycharm](http://www.jetbrains.com/pycharm/)：个人用过的觉得是最好的python IDE，或许，用多了会上瘾的感觉，（收费的商业版，当然也有社区版。。。怎么使用就看你们的方式了）  
-**mahout**：一款由java编写的机器学习的库，能够跟hadoop完美的融合，对于大数据的机器学习非常的好，在企业的具体应用中也开始在用了，至于为什么给大家推荐呢，  
+[pythonxy](https://code.google.com/p/pythonxy)：一个集成了很多科学计算工具的python版本。本专题的代码虽然都是自己实现，但是也可以通过scipy库中的一些封装好的函数库去实现。其实现更加合理科学。  
+[pycharm](http://www.jetbrains.com/pycharm)：个人用过的觉得是最好的python IDE，或许，用多了会上瘾的感觉，（收费的商业版，当然也有社区版。。。怎么使用就看你们的方式了）  
+[mahout](http://mahout.apache.org)：一款由java编写的机器学习的库，能够跟hadoop完美的融合，对于大数据的机器学习非常的好，在企业的具体应用中也开始在用了，至于为什么给大家推荐呢，  
 
 不是因为作为一个代码库可以偷懒，我一直的原则都是，能够做得出的才去偷懒，不然就勤快点，主要是因为本期演示的数据非常的少，所以没有什么影响，但是真正应用中的话数据量是非常大的，试想下，如果以淘宝或者亚马逊的交易商品来做推荐，那么多数据，如果自己写代码一个个去跑，该跑到什么时候。。。
 
 一段代码
 --------
-```
+``` python
+#!/usr/env python
+import socket
+from smtplib import *
+from email import *
+"""
+   
+"""
+def get_ip():
+    sock = socket.create_connection(('ns1.dnspod.net', 6666))
+    ip = sock.recv(16)
+    sock.close()
+    return ip
+ 
+def send_mail():
+   s = SMTP()
+   s.connect("smtp.xxx.com")
+   s.login("xx@xx.com", "xx")
+   msg = mime.Multipart.MIMEMultipart()
+   msg['Subject'] = u"RaspberryPi IP"
+   msg['From'] = "xx@xx.com"
+   msg['To'] = 'xx@xx.com'
+   text = "Your home IP: " + get_ip()
+   msg.attach(mime.Text.MIMEText(text, "plain", "utf-8"))
+   se = s.sendmail("xx@xx.com", ['xx@xx.com'], msg.as_string())
+   s.quit()
 ```
 
 成员推荐
@@ -173,7 +198,7 @@ def getRecommendations(prefs,person,similarity=sim_pearson):
 <a name="tj"></a>
 ![Photo]()  
 网名：  
-群ID：   
+群ID: []   
 主页：<http://>  
 技术：   
 简介：  
