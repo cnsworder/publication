@@ -100,7 +100,7 @@ def sim_pearson(prefer, person1, person2):
 （注，这种方式也就是基于用户的协同过滤，此时用于物品基本上跟用户之间的比例差不大的情况下才适合。如果用户多了呢，此时怎么办，留给大家的思考）
 OK，老规矩，继续贴代码。
 此时定义一个函数名字叫做 *topMatches* 用来得到某个人的排序过的用户匹配度
-#代码相当简单就不解释了。
+代码相当简单就不解释了。
 ``` python
 def topMatches(prefs,person,n=5,similarity=sim_pearson):
     scores=[(similarity(prefs,person,other),other)
