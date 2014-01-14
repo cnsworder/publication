@@ -12,7 +12,7 @@ GNU/Linux Developer
 
 本期专题：使用Python简易推荐系统的构建
 -----------
-作者：[唯一](#tj)
+作者：[唯一](#tj)  
 很惭愧的，被**猫猫**给坑了，让我一个半桶水的家伙，跟大家分享个挺好玩的东西。尽管不是挺深入，但是绝对够科普。
 
 
@@ -45,30 +45,30 @@ perfers = {
 这里有一些用户会有其他用户没有评分过的电影的评分，这里假设没有评分就是没有看过。
 OK，接下来，我们要引入一个概念，那个概念就是用户的相似度，我们如何判断两个用户之间的相似度呢？
 
-我们在数学上应该学过两条点之间的距离，也就是欧几里得距离,[参考](http://baike.baidu.com/view/2869924.htm?fromtitle=%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E8%B7%9D%E7%A6%BB&fromid=2701459&type=syn)  
-欧几里得距离会等于 `sqrt(sum(xs-ys,2))`
+我们在数学上应该学过两条点之间的距离，也就是欧几里得距离[参考](http://baike.baidu.com/view/2869924.htm?fromtitle=%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E8%B7%9D%E7%A6%BB&fromid=2701459&type=syn),欧几里得距离会等于 `sqrt(sum(xs-ys,2))`
 因此我们定义一个函数：
-相似度 = 1/（1+欧式距离） 加1 是为了怕距离为0
+`相似度 = 1 /（1 + 欧式距离）`   
+加1 是为了防止距离为0  
 
 ``` python
-def sim_distance(prefs,person1,person2):
+def sim_distance(prefs, person1, person2):
     si = {}
-    for it in prefs[person1]:#找出共同点
+    for it in prefs[person1]: #找出共同点
         if it in prefs[person2]:
             si[it] = 1
     if len(si) == 0:
         return 0
-    pSum = math.sqrt(sum(pow(prefs[person1][it]-prefs[person2][it],2) for it in si))
-    return 1.0/(1+pSum)
+    pSum = math.sqrt(sum(pow(prefs[person1][it] - prefs[person2][it],2) for it in si))
+    return 1.0 / (1 + pSum)
 ```
 
 运行下面的结果得到 
 > `print sim_distance(perfers,"Tom","Jackson")`  
 > `0.294298055086`
 
-欧几里得距离评价法是一种比较简单的方法。但是由于存在一些用户总是倾向于》》评分过高或过低（相对平均值），
-这时兴趣相似的用户并不能通过此方法计算出来。Pearson相关系数是根据两组数据与某一直线的拟合程度来衡量的。
-OK,Pearson相关系数，又叫做[皮尔逊相关系数](http://zh.wikipedia.org/wiki/%E7%9A%AE%E5%B0%94%E9%80%8A%E7%A7%AF%E7%9F%A9%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0),（我也看不懂，直接扔代码...）
+欧几里得距离评价法是一种比较简单的方法。但是由于存在一些用户总是倾向于评分过高或过低（相对平均值），
+这时兴趣相似的用户并不能通过此方法计算出来。Pearson相关系数是根据两组数据与某一直线的拟合程度来衡量的。  
+OK,Pearson相关系数，又叫做[皮尔逊相关系数](http://zh.wikipedia.org/wiki/%E7%9A%AE%E5%B0%94%E9%80%8A%E7%A7%AF%E7%9F%A9%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0),（我也看不懂，直接扔代码...）  
 ``` python
 def sim_pearson(prefer, person1, person2):
     sim = {}
@@ -78,70 +78,67 @@ def sim_pearson(prefer, person1, person2):
             sim[item] = 1           #将相同项添加到字典sim中
     #元素个数
     n = len(sim)
-    if len(sim)==0:
+    if len(sim) == 0:
         return 0
     # 所有偏好之和
     sum1 = sum([prefer[person1][item] for item in sim])  #1.sum([1,4,5,,,])  2.list的灵活生成方式!
     sum2 = sum([prefer[person2][item] for item in sim])
     #求平方和
-    sum1Sq = sum( [pow(prefer[person1][item] ,2) for item in sim] )
-    sum2Sq = sum( [pow(prefer[person2][item] ,2) for item in sim] )
+    sum1Sq = sum( [pow(prefer[person1][item], 2) for item in sim] )
+    sum2Sq = sum( [pow(prefer[person2][item], 2) for item in sim] )
     #求乘积之和 ∑XiYi
-    sumMulti = sum([prefer[person1][item]*prefer[person2][item] for item in sim])
+    sumMulti = sum([prefer[person1][item] * prefer[person2][item] for item in sim])
     num1 = sumMulti - (sum1*sum2/n)
-    num2 = math.sqrt( (sum1Sq-pow(sum1,2)/n)*(sum2Sq-pow(sum2,2)/n))
-    if num2==0:
+    num2 = math.sqrt((sum1Sq-pow(sum1,2) / n) * (sum2Sq - pow(sum2, 2) / n))
+    if num2 == 0:
         return 0
-    return num1/num2
+    return num1 / num2
 ```
 
 **测试下**
-> print sim_pearson(perfers,"Tom","Jackson")  
+> print sim_pearson(perfers, "Tom", "Jackson")  
 > 0.396059017191
 
-看到了吧，通过上述的方式我们可以计算出一个两个用户之间的相似度（也就是对同一种东西的看法的相似度，那所谓的推荐系统是不是呼之欲出了呢）
-没错，刚刚开始最简单的推荐系统就是通过计算每一个用户跟其他用户的相似度，
-然后按照相似度排序完之后，将相似度高的A向B推荐B没有接触过而A已经接触过的东西。
-（注，这种方式也就是基于用户的协同过滤，此时用于物品基本上跟用户之间的比例差不大的情况下才适合。如果用户多了呢，此时怎么办，留给大家的思考）
-OK，老规矩，继续贴代码。
-此时定义一个函数名字叫做 *topMatches* 用来得到某个人的排序过的用户匹配度
-代码相当简单就不解释了。
+看到了吧，通过上述的方式我们可以计算出一个两个用户之间的相似度（也就是对同一种东西的看法的相似度，那所谓的推荐系统是不是呼之欲出了呢）。没错，刚刚开始最简单的推荐系统就是通过计算每一个用户跟其他用户的相似度，然后按照相似度排序完之后，将相似度高的A向B推荐B没有接触过而A已经接触过的东西。  
+**注：**这种方式也就是基于用户的协同过滤，此时用于物品基本上跟用户之间的比例差不大的情况下才适合。如果用户多了呢，此时怎么办，留给大家的思考  
+OK，老规矩，继续贴代码。此时定义一个函数名字叫做 *topMatches* 用来得到某个人的排序过的用户匹配度，代码相当简单就不解释了。  
 ``` python
-def topMatches(prefs,person,n=5,similarity=sim_pearson):
-    scores=[(similarity(prefs,person,other),other)
-            for other in prefs if other!=person]
+def topMatches(prefs, person, n = 5, similarity = sim_pearson):
+    scores=[(similarity(prefs, person, other),other)
+            for other in prefs if other != person]
     scores.sort()
     scores.reverse()
     return scores[0:n] 
 ```
 **测试下**  	
-> print topMatches(perfers,"Tom")  
-> print topMatches(perfers,"Jack")  
+> print topMatches(perfers, "Tom")  
+> print topMatches(perfers, "Jack")  
 
-哈哈，你们看到Jack跟Tom不愧是一对好基友吧。。。  
+哈哈，你们看到Jack跟Tom不愧是一对好基友吧...  
 
 > [(0.9912407071619299, 'Jack'), (0.7470178808339965, 'Angelia'), (0.5940885257860044, 'Aimee'), (0.5669467095138396, 'Abby'), (0.40451991747794525, 'Scotte')]  
 > [(0.9912407071619299, 'Tom'), (0.9244734516419049, 'Aimee'), (0.8934051474415647, 'Abby'), (0.66284898035987, 'Angelia'), (0.38124642583151164, 'Jackson')]
 
-那接下来，进入最后一步了，请问，我想得到推荐给Tom的东西要怎么做。。。
+那接下来，进入最后一步了，请问，我想得到推荐给Tom的东西要怎么做...  
 ``` python
-def getRecommendations(prefs,person,similarity=sim_pearson):
-    totals={}
-    simSums={}
+def getRecommendations(prefs,person,similarity = sim_pearson):
+    totals = {}
+    simSums = {}
     for other in prefs:
-        if other==person: continue
-        sim=similarity(prefs,person,other)
+        if other == person: continue
+        
+        sim = similarity(prefs, person, other)
 
-        if sim<=0: continue
+        if sim <= 0: continue
+        
         for item in prefs[other]:
-
-            if item not in prefs[person] or prefs[person][item]==0:
-                totals.setdefault(item,0)
-                totals[item]+=prefs[other][item]*sim
-                simSums.setdefault(item,0)
-                simSums[item]+=sim
+            if item not in prefs[person] or prefs[person][item] == 0:
+                totals.setdefault(item, 0)
+                totals[item] += prefs[other][item] * sim
+                simSums.setdefault(item, 0)
+                simSums[item] += sim
     
-    rankings=[(total/simSums[item],item) for item,total in totals.items()]
+    rankings = [(total / simSums[item], item) for item, total in totals.items()]
 
     rankings.sort()
     rankings.reverse()
@@ -153,10 +150,10 @@ def getRecommendations(prefs,person,similarity=sim_pearson):
 > []  
 > [(3.3477895267131013, 'Movie6'), (2.832549918264162, 'Movie1'), (2.530980703765565, 'Movie3')]  
 
-这个时候因为Tom已经看过所有的电影了，，，所以没得推荐了。。。
+这个时候因为Tom已经看过所有的电影了，所以没得推荐了...
 
-行吧，本期的献丑也到此为止了，，由于本人也是因为工作需要刚刚接触，所以，有兴趣的一起交流哈。。哇咔咔。
-另外鄙视下坑我的猫猫。。。大家一起鄙视下。
+行吧，本期的献丑也到此为止了，由于本人也是因为工作需要刚刚接触，所以有兴趣的一起交流哈。
+另外鄙视下坑我的**猫猫**。。。大家一起鄙视下，同时期待**猫猫**带来的**Cubieboard**开发板专题。
 
 资源推荐
 ----------
