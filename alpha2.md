@@ -2,15 +2,20 @@
 GNU/Linux Developer
 ===========================
 **Aplha2**  
-**kernel stable:3.12.7**  
+**kernel stable: 3.12.7**  
 **QQ群号：20506135**  
 **微信号：linux_developer**  
 **本期编辑：唯一**  
 
+《GNU/Linux Developer》第**Aplha2**期在春节前和大家见面了，本期*唯一*将为大家带来专题**使用Python构建简易推荐系统**。  
+
+
+本期专题：使用Python简易推荐系统的构建
+-----------
+作者：[唯一](#tj)
 很惭愧的，被**猫猫**给坑了，让我一个半桶水的家伙，跟大家分享个挺好玩的东西。尽管不是挺深入，但是绝对够科普。
 
-本期专题：简易推荐系统的构建
------------
+
 个性化推荐是根据用户的兴趣特点和购买行为，向用户推荐用户感兴趣的信息和商品。
 随着电子商务规模的不断扩大，商品个数和种类快速增长，顾客需要花费大量的时间才能找到自己想买的商品。
 这种浏览大量无关的信息和产品过程无疑会使淹没在信息过载问题中的消费者不断流失。为了解决这些问题，个性化推荐系统应运而生。
@@ -171,7 +176,8 @@ import socket
 from smtplib import *
 from email import *
 """
-   
+   上一期，通过bash脚本借助curl获取ifconfig.me返回的地址并发送邮件，
+   这一期我们用python实现借助dnspod来获取外网ip地址并发送邮件
 """
 def get_ip():
     sock = socket.create_connection(('ns1.dnspod.net', 6666))
@@ -193,10 +199,10 @@ def send_mail():
    s.quit()
 ```
 
-成员推荐
+作者简介
 --------
 <a name="tj"></a>
-![Photo]()  
+![Photo](http://)  
 网名：  
 群ID: [广州]唯一   
 主页：<http://>  
@@ -204,5 +210,5 @@ def send_mail():
 简介：  
 - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
-如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha2.md)或[网站](http://ssh.cnsworder.com)。  
+如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha2.md)或[网站](http://ssh.cnsworder.com/alpha2.html)。  
 我们在github上开放编辑希望大家能参与到其中。
