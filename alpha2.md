@@ -2,10 +2,10 @@
 GNU/Linux Developer
 ===========================
 **Aplha2**  
-**kernel stable: 3.12.7**  
-**QQ群号：20506135**  
-**微信号：linux_developer**  
-**本期编辑：唯一**  
+**kernel stable： 3.12.7**  
+**QQ群号： 20506135**  
+**微信号： linux_developer**  
+**本期编辑： 猫猫**  
 
 《GNU/Linux Developer》第**Aplha2**期在春节前和大家见面了，本期*唯一*将为大家带来专题**使用Python构建简易推荐系统**。  
 
