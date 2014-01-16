@@ -202,11 +202,11 @@ def send_mail():
 --------
 <a name="tj"></a>
 ![Photo](http://)  
-网名：  
+网名： 唯一 
 群ID: [广州]唯一   
 主页：<http://>  
-技术：   
-简介：  
+技术：java、搜索引擎   
+简介：广州小小程序员。喜欢折腾代码。。  
 - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
 如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha2.md)或[网站](http://ssh.cnsworder.com/alpha2.html)。  
