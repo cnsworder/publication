@@ -202,7 +202,7 @@ def send_mail():
 --------
 <a name="tj"></a>
 ![Photo](http://)  
-网名： 唯一 
+网名： 唯一<br/>
 群ID: [广州]唯一   
 主页：<http://>  
 技术：java、搜索引擎   
