@@ -211,6 +211,8 @@ Tip
 > read、write默认是不带缓冲的  
 > fread、fwrite默认是带缓冲的  
 
+
+
 > `int fileno(FILE *stream)`可以将文件指针转换成文件描述符  
 > `FILE *fdopen(int fd, const char *mode)`将文件描述符转换成文件指针  
 
