@@ -198,6 +198,13 @@ def send_mail():
    s.quit()
 ```
 
+开源吉祥物
+--------
+![beasties](http://ssh.cnsworder.com/img/daemon-tux-hexley.png)  
+FreeBSD: Beastie  
+Linux: Tux  
+darwin: Hexley
+
 作者简介
 --------
 <a name="tj"></a>
