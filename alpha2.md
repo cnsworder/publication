@@ -208,7 +208,8 @@ darwin: Hexley
 Tip
 -------
 #### 开发
->
+> read、write默认是不带缓冲的  
+> fread、fwrite默认是带缓冲的  
 
 #### 运维
 > tmux和screen可以在远程断开后继续运行
