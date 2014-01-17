@@ -205,6 +205,18 @@ FreeBSD: Beastie
 Linux: Tux  
 darwin: Hexley
 
+Tip
+-------
+#### 开发
+>
+
+#### 运维
+> tmux和screen可以在远程断开后继续运行
+
+#### 使用
+> `fedup --network 20` 将fedora升级到最新的20
+
+
 作者简介
 --------
 <a name="tj"></a>
