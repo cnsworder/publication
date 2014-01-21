@@ -4,7 +4,7 @@
     hljs.initHighlightingOnLoad();
 </script>
 
-![Tux](https://www.kernel.org/theme/images/logos/tux.png)
+![Tux](http://ssh.cnsworder.com/img/tux.png)
 
 GNU/Linux Developer
 ==============================================================  
