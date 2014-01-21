@@ -1,6 +1,14 @@
-![Tux](https://www.kernel.org/theme/images/logos/tux.png)  
+<link rel="stylesheet" href="http://ssh.cnsworder.com/styles/monokai_sublime.css" />
+<script type="text/javascript" src="http://ssh.cnsworder.com/highlight.pack.js"></script>
+<script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+</script>
+
+![Tux](https://www.kernel.org/theme/images/logos/tux.png)
+ 
 GNU/Linux Developer
-===========================
+==============================================================  
+
 **Aplha2**  
 **kernel stable： 3.12.7**  
 **QQ群号： 20506135**  
