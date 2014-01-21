@@ -10,7 +10,7 @@ GNU/Linux Developer
 ==============================================================  
 
 **Aplha2**  
-**kernel stable： 3.12.7**  
+**kernel stable： 3.13**  
 **QQ群号： 20506135**  
 **微信号： linux_developer**  
 **本期编辑： 猫猫**  
