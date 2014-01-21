@@ -5,7 +5,7 @@
 </script>
 
 ![Tux](https://www.kernel.org/theme/images/logos/tux.png)
- 
+
 GNU/Linux Developer
 ==============================================================  
 
@@ -237,7 +237,7 @@ Tip
 ![Photo](http://ssh.cnsworder.com/img/weiyi.jpg)  
 网名： 唯一<br/>
 群ID: [广州]唯一   
-主页：<http://>  
+微博：<http://www.weibo.com/sadlin>  
 技术：java、搜索引擎   
 简介：广州小小程序员。喜欢折腾代码。。  
 - - -
