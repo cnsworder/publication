@@ -226,7 +226,7 @@ Tip
 作者简介
 --------
 <a name="tj"></a>
-![Photo](http://)  
+![Photo](http://ssh.cnsworder.com/img/weiyi.jpg)  
 网名： 唯一<br/>
 群ID: [广州]唯一   
 主页：<http://>  
