@@ -279,15 +279,19 @@ web.py解析(httpserver部分)
 将application的方法wsgifunc最为闭包传递给后边的方法，之后的方法，但是在这里我要告诉大家这个方法就是server进行response的地方。    
 2. wsgi.runwsgi经过条件判断，把wsgifunc交给了httpserver.runsimple(func, validip(listget(sys.argv, 1, '')))，在这里listget把命令行的参数ip和port。    
 3. `httpserver.runsimple(func，(ip, port))`方法。    
+
     1. StaticMiddleware里边对func进行了分拣，如果属于static文件（通过文件夹名称划分），就是归于StaticMiddleware把文件输出。    
     2. 此时原来的func替换成了StaticMiddleware的`__call__`。之后的LogMiddleware，在func包裹了一层日志输出。    
-    3. 终于到了`WSGIServer`，`WSGIServer`也很简单，只有一点方法`wsgiserver.CherryPyWSGIServer(server\_address, wsgi\_app, server_name)`。    
+    3. 终于到了`WSGIServer`，`WSGIServer`也很简单，只有一点方法`wsgiserver.CherryPyWSGIServer(server_address, wsgi_app, server_name)`。    
+
 4. `wsgiserver.CherryPyWSGIServer`，创建了线程池ThreadPool，`WSGIGateway_10`和`httpserver`的各项参数，如端口，接收请求的根数，超时时间等。    
 5. 这里结束了wsgiserver.CherryPyWSGIServer，回到WSGIServer方法，再回到httpserver.runsimple，到了server.start()    
-6. server.start()正式开始创建了socket，并开始监听。启动了线程池（requests.start()），把线程池装满线程。开始接受连接，对连接的socket进行封装成connection。把connection放入连接池。
-与此同时线程池中的线程也在工作着，从连接池拿到连接，然后调用conn.communication  7. communication方法的作用，创建HTTPRequest，分析`request`，`req.response`.    
+6. server.start()正式开始创建了socket，并开始监听。启动了线程池（requests.start()），把线程池装满线程。开始接受连接，对连接的socket进行封装成connection。把connection放入连接池。与此同时线程池中的线程也在工作着，从连接池拿到连接，然后调用conn.communication  
+7. communication方法的作用，创建HTTPRequest，分析`request`，`req.response`.    
+
     1. 分析request,读取了http header，获取了http所需的一切内容。    
-    2. req.response，最重要的部分self.server.gateway(self).respond()，在这里gateway进行了构造，其中最重要的是整个http环境进行了记录。由gateway进行response。    
+    2. req.response，最重要的部分self.server.gateway(self).respond()，在这里gateway进行了构造，其中最重要的是整个http环境进行了记录。由gateway进行response。 
+
 8. 而在WSGIGateway，respond里边可以看到这个`self.req.server.wsgi_app(self.env, self.start_response)`这样一句，
 这个`wsgi_app`就是第4步，`wsgi_app`就是在这一步返回的闭包。那个报过了日志输出的func。而核心还是application的wsgifunc。终于绕回来了。    
 9. 在application的wsgi里边，`load(env)`将环境进行载入，将一开始add processor的几个processors，执行完了之后，执行handle()方法。
