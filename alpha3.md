@@ -322,33 +322,76 @@ web.py使用了线程池，application内部使用了web.ctx作为全局变量�
 
 资源推荐
 ----------
+《essential C++》：这是一本绝对值得推荐的C++入门书。不厚200多页。但是在这200多页，里边 Stanley B.lippman，C++的创始人。就会交给你学习C++注意的关键细节。中文版的作者--侯捷，也是一位大牛，强强联手，品质保证。    
+[nginx lua](https://github.com/chaoslawful/lua-nginx-module):nginx配置文件执行lua脚本，以往nginx做反向代理都是在配置文件中配置，现在直接放到数据里里边，通过lua脚本来做。省了不少事情，数据迁移问题也少了很多。    
+[网易公开课](http://open.163.com):好东西，尤其MIT，哈佛的课程。可以推荐的好多啊。    
 
 一段代码
 --------
-```  
-code here
-```
+```Python
+def anna(fn):
+    def new_func(*args):
+        print 'by anna args=%s' % args
+        return fn(*args)
+    return new_func
 
+def annie(ar):
+    print 'by annie1 ar=%s' % ar
+    def _A(fn):
+        def new_func(*args):
+            print 'by annie2 args=%s' % args
+            return fn(*args)
+        return new_func
+    return _A
+    
+class ccc():
+    @anna
+    def __init__(self):
+        print 'ccc'
+    @anna
+    def ff(self, a):
+        print a
+
+
+
+@anna
+def test1(a):
+    print a
+
+@annie('hi')
+def test2(a):
+    print a
+
+test1((1,2))
+test2((3,4))
+"""
+这段代码实现了decorator 模式
+"""
+```
 Tip
 -------
 #### 开发
+开发服务端程序，客户端连接不顺畅，netstat查看网络连接状态，出现大量CLOSE_WAIT时候，请查看服务端代码，是否有对于无效连接close是否及时。
 
 #### 运维
+客户端连接不顺畅，netstat查看网络连接状态，出现大量TIME_WAIT时候，就需要对系统参数进行调整TIME_WAIT重复使用参数。执行命令     
+echo "1" > /proc/sys/net/ipv4/tcp_tw_reuse    
+echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle
 
 
 #### 使用
-
+（null）
 
 
 作者简介
 --------
 <a name="tj"></a>
 ![Photo]()  
-网名： onwone  
+网名： ownone  
 群ID: [北京]Num1*  
-微博：<>  
-技术： 
-简介：  
+微博：<http://t.qq.com/ownone_vip>   
+技术：C、python、linux、web、网络编程   
+简介：北京程序员一枚，没有更多的想法。慢慢学习吧！！  
 - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
 如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha2.md)或[网站](http://ssh.cnsworder.com/alpha2.html)。  
