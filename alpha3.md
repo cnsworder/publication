@@ -387,7 +387,7 @@ echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle
 作者简介
 --------
 <a name="tj"></a>
-![Photo]()  
+![Photo](http://ssh.cnsworder.com/img/ownone.jpg)  
 网名： ownone  
 群ID: [北京]Num1*  
 微博：<http://t.qq.com/ownone_vip>   
