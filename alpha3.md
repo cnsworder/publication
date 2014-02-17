@@ -376,7 +376,8 @@ Tip
 #### 运维
 客户端连接不顺畅，netstat查看网络连接状态，出现大量TIME_WAIT时候，就需要对系统参数进行调整TIME_WAIT重复使用参数。执行命令     
 echo "1" > /proc/sys/net/ipv4/tcp_tw_reuse    
-echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle
+echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle    
+这样对TIME_WAIT的套接字进行回收利用，减少TIME_WAIT浪费的套接字。
 
 
 #### 使用
@@ -391,7 +392,7 @@ echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle
 群ID: [北京]Num1*  
 微博：<http://t.qq.com/ownone_vip>   
 技术：C、python、linux、web、网络编程   
-简介：北京程序员一枚，没有更多的想法。慢慢学习吧！！  
+简介：北京程序员一枚，带一点开源的浪漫主义情怀，带一点悲观主义（开源在中国的商业化）。努力工作。  
 - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
 如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha3.md)或[网站](http://ssh.cnsworder.com/alpha3.html)。  
