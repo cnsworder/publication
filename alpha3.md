@@ -4,12 +4,10 @@
     hljs.initHighlightingOnLoad();
 </script>
 
-![Tux](http://ssh.cnsworder.com/img/tux.png)
-
 GNU/Linux Developer
 ==============================================================  
-
-**Aplha2**  
+![Tux](http://ssh.cnsworder.com/img/tux.png)  
+**Aplha3**  
 **kernel stable： 3.13**  
 **QQ群号： 20506135**  
 **微信号： linux_developer**  
@@ -181,9 +179,9 @@ CMake的作用是生成Makefile或者特定的IDE工程，它极大解决编译�
 
 ### cmake命令行
 
-**两种使用方式**：
->    cmake [option] <path-to-source> 指向含有顶级CMakeLists.txt的那个目录  
->    cmake [option] <path-to-existing-build> 指向含有CMakeCache.txt的那个目录  
+**两种使用方式**:  
+> cmake [option] <path-to-source> 指向含有顶级CMakeLists.txt的那个目录  
+> cmake [option] <path-to-existing-build> 指向含有CMakeCache.txt的那个目录  
 
 
 第一种方式用于第一次生成cmake makefile，此后可以在build dir里直接`cmake . `。**注意**`.`表示当前目录，因为当前目录中已经有CMakeCache.txt，所以适用第二种方式。实际上cmake总是先检查指定的build dir中有没有CMakeCache.txt，如果有就按第二种方式处理；如果没有才寻找CMakeLists.txt使用第一种方式处理。
@@ -278,7 +276,7 @@ web.py解析(httpserver部分)
 
 1. application对象`__init__`时候，将映射表，环境传入application，创建运行环境，创建了processors。`application.run`调用`wsgi.runwsgi(self.wsgifunc(\*middleware))`  
 将application的方法wsgifunc最为闭包传递给后边的方法，之后的方法，但是在这里我要告诉大家这个方法就是server进行response的地方。    
-2. wsgi.runwsgi经过条件判断，把wsgifunc交给了httpserver.runsimple(func, validip(listget(sys.argv, 1, '')))，在这里listget把命令行的参数ip和port。    
+2. wsgi.runwsgi经过条件判断，把wsgifunc交给了`httpserver.runsimple(func, validip(listget(sys.argv, 1, '')))`，在这里listget把命令行的参数ip和port。    
 3. `httpserver.runsimple(func，(ip, port))`方法。    
     
     1. StaticMiddleware里边对func进行了分拣，如果属于static文件（通过文件夹名称划分），就是归于StaticMiddleware把文件输出。
@@ -286,19 +284,19 @@ web.py解析(httpserver部分)
     3. 终于到了`WSGIServer`，`WSGIServer`也很简单，只有一点方法`wsgiserver.CherryPyWSGIServer(server_address, wsgi_app, server_name)`.  
 
 4. `wsgiserver.CherryPyWSGIServer`，创建了线程池ThreadPool，`WSGIGateway_10`和`httpserver`的各项参数，如端口，接收请求的根数，超时时间等。    
-5. 这里结束了wsgiserver.CherryPyWSGIServer，回到WSGIServer方法，再回到httpserver.runsimple，到了server.start()    
-6. server.start()正式开始创建了socket，并开始监听。启动了线程池（requests.start()），把线程池装满线程。开始接受连接，对连接的socket进行封装成connection。把connection放入连接池。与此同时线程池中的线程也在工作着，从连接池拿到连接，然后调用conn.communication  
+5. 这里结束了`wsgiserver.CherryPyWSGIServer`，回到WSGIServer方法，再回到httpserver.runsimple，到了server.start()    
+6. `server.start()`正式开始创建了socket，并开始监听。启动了线程池（`requests.start()`），把线程池装满线程。开始接受连接，对连接的socket进行封装成connection。把connection放入连接池。与此同时线程池中的线程也在工作着，从连接池拿到连接，然后调用`conn.communication`  
 7. communication方法的作用，创建HTTPRequest，分析`request`，`req.response`.    
 
     1. 分析request,读取了http header，获取了http所需的一切内容。    
-    2. req.response，最重要的部分self.server.gateway(self).respond()，在这里gateway进行了构造，其中最重要的是整个http环境进行了记录。由gateway进行response。 
+    2. `req.response`，最重要的部分`self.server.gateway(self).respond()`，在这里gateway进行了构造，其中最重要的是整个http环境进行了记录。由gateway进行response。 
 
 8. 而在WSGIGateway，respond里边可以看到这个`self.req.server.wsgi_app(self.env, self.start_response)`这样一句，
 这个`wsgi_app`就是第4步，`wsgi_app`就是在这一步返回的闭包。那个报过了日志输出的func。而核心还是application的wsgifunc。终于绕回来了。    
 9. 在application的wsgi里边，`load(env)`将环境进行载入，将一开始add processor的几个processors，执行完了之后，执行handle()方法。
 在handle里边，_match确定了需要调用那个类，`_delegate`真正执行了对应path的类。     
 
-诶, 一层一层的追溯代码的调用关系，中间经历了几次连接断掉的情况。好几次都绕在了，request的respond方法如何到了application.wsgifunc。http状态是如何到了application里边的，而urls mapping只在application里边。这个像是断掉的绳子，连接不起了。    
+诶, 一层一层的追溯代码的调用关系，中间经历了几次连接断掉的情况。好几次都绕在了，request的respond方法如何到了`application.wsgifunc`。http状态是如何到了application里边的，而urls mapping只在application里边。这个像是断掉的绳子，连接不起了。    
 
 httpserver的实质是一个socket监听端口，分析http head，根据http head的method，path，paramters，然后输出文本。就是这么简单，但是web.py为了实现这个非常简单的内容。绕了多少圈啊！！！我认为web.py将application作为网站内容的container不太合适，也许这就是web.py代码绕来绕去的原因。
 
