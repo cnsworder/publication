@@ -52,7 +52,7 @@ C/C++的编译过程和Makefile
 
 对于C/C++的编译的过程可以分成很多细节。
 可以看图  
-![Alt text](./image/compile_process.jpg)
+![Alt text](http://ssh.cnsworder.com/img/compile_process.jpg)
 
 
 真实的情况只是很简单的场景，我们不是在汇编课上，需要使用gcc生成汇编语言来完成我们的作业。 
