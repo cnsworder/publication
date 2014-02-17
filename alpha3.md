@@ -37,7 +37,7 @@ GNU/Linux Developer
 什么是Makefile
 ----------------
 
-Makefile是一个或者多个C/C++工程的编译过程的描述。描述了从源文件到中间文件再到目标文件的过程。这些描述根据特定的规则编写，提供给make程序使用。make执行Makefile(默认名字是Makefile，如果是其他名字softname.mak，则执行命令-f softname.mak)，就执行了C/C++的编译过程。    
+Makefile是一个或者多个C/C++工程的编译过程的描述。描述了从源文件到中间文件再到目标文件的过程。这些描述根据特定的规则编写，提供给make程序使用。make执行Makefile(默认名字是Makefile，如果是其他名字softname.mak，则执行命令`-f softname.mak`)，就执行了C/C++的编译过程。    
 如果你在Linux上做过从源码安装软件，总会使用命令make & make install。不管之前的操作时./configure还是cmake。因为Makefile的简单明确，已经让它被广大程序员接受，作为了C/C++工具链必备的一环。新的编译系统的产生也只是为了辅助产生Makefile，而更好的服务程序员们。     
 
 IDE和Makefile
