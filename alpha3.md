@@ -380,8 +380,8 @@ echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle
 
 
 #### 使用
-（null）
-
+快速制作启动U盘
+> dd if=[镜像文件] of=[u盘设备] bs=4M
 
 作者简介
 --------
@@ -394,5 +394,6 @@ echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle
 简介：北京程序员一枚，没有更多的想法。慢慢学习吧！！  
 - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
-如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha2.md)或[网站](http://ssh.cnsworder.com/alpha2.html)。  
+如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha3.md)或[网站](http://ssh.cnsworder.com/alpha3.html)。  
+如果查看历史订阅请到[readthedocs](http://linux.readthedocs.org/zh_CN/latest/)。  
 我们在github上开放编辑希望大家能参与到其中。
