@@ -7,14 +7,14 @@
 GNU/Linux Developer
 ==============================================================  
 ![Tux](http://ssh.cnsworder.com/img/tux.png)  
-**Aplha3**  
+**Alpha3**  
 **kernel stable： 3.13**  
 **QQ群号： 20506135**  
 **微信号： linux_developer**  
 **本期编辑： 猫猫**  
 **专题作者： onwone**  
 
-《GNU/Linux Developer》第Aplha3期在春节后和大家见面了，本期**onwone**有**《C/C++编译系统》**、**《web.py分析(一)》**两个专题和大家分享。     
+《GNU/Linux Developer》第Alpha3期在春节后和大家见面了，本期**onwone**有**《C/C++编译系统》**、**《web.py分析(一)》**两个专题和大家分享。     
 
 前言
 ====
