@@ -311,12 +311,12 @@ web.py的httpserver有一个比较凌乱的调用过程，是在太多凌乱了�
 分析web.py的感受    
 -----------------
 
-我在分析web.py只是最为httpserver来分析的，当然也只是分析了它如何实现httpserver。但是我也看到了它在使用ssl，chunkTransfer等等一些http服务器应用的代码。web.py一个优秀的httpserver，在这里我只是分析它的实现逻辑，但是对它更加细节部分缺少理解，也对他如何将这些细节组合在一起也缺少理解。    
+我在分析web.py只是作为httpserver来分析的，当然也只是分析了它如何实现httpserver。但是我也看到了它在使用ssl，chunkTransfer等等一些http服务器应用的代码。web.py一个优秀的httpserver，在这里我只是分析它的实现逻辑，但是对它更加细节部分缺少理解，也对他如何将这些细节组合在一起也缺少理解。    
 我想以后我还会更加深入的分析web.py这款简单的httpserver。
 
 **NOTE：**    
-开始时候想到了一个问题。web.py怎么能把全局变量和线程池搅合在一起，而没有出现错误。纠结了一天，第二天醒了的时候，想起来一个非常
-web.py使用了线程池，application内部使用了web.ctx作为全局变量。但事实上，但是web.ctx是ThreadedDict，最终来自于threadlocal,如果你想了解threadlocal是怎么实现的，查看python23.py。
+开始时候想到了一个问题。web.py怎么能把全局变量和线程池搅合在一起，而没有出现错误。纠结了一天，第二天醒了的时候，想起来一个事情，
+web.py使用了线程池，application内部使用了web.ctx作为全局变量。但事实上，web.ctx是ThreadedDict，最终来自于threadlocal,如果你想了解threadlocal是怎么实现的，查看python23.py。
 
 资源推荐
 ----------
