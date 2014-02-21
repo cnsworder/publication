@@ -49,7 +49,7 @@ grub加载的配置如下图:
 ##### 早期init 系统简介
 在内核所有的操作完成以后就会从根文件系统中加载地一个要执行的程序，他是所有程序的父进程，也是我们今天的主角**init**。恩，前面的废话太多了，现在才进入正题...
 
-init的历史很久远，早期Linux使用的init有两个版本：`sysV`和`BSD`。现在他们仍旧没有完全被废弃，现在还有不少发行版本采用这两个系统比如dibian还采用system V init,archlinux在12年前后才放弃BSD init切换到systemd。废话不多说，分别描述一下。
+init的历史很久远，早期Linux使用的init有两个版本：`sysV`和`BSD`。现在他们仍旧没有完全被废弃，现在还有不少发行版本采用这两个系统比如dibian还采用system V init,archlinux在20jenk12年前后才放弃BSD init切换到systemd。废话不多说，分别描述一下。
 
 + BSD
        - 使用/etc目录下以rc.x作为文件名的文件来描述init的操作
@@ -99,7 +99,8 @@ systemctl来管理systemd，同时也兼容service命令
 
 资源推荐
 ----------
-
+[iOS安全攻防](http://blog.csdn.net/column/details/hackingios.html): 美女程序员吴茜的大作，分析iOS数据窃取与防范的好文章。  
+[Android安全攻防](http://blog.csdn.net/yiyaaixuexi/article/category/1302842): 美女的另一大作，介绍android安全机制SEAndroid。
 一段代码
 --------
 
