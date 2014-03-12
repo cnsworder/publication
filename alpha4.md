@@ -13,7 +13,7 @@ GNU/Linux Developer
 **微信号： linux_developer**  
 **主编： 猫猫**  
 
-《GNU/Linux Developer》第Alpha4期在春风中来了了，本期**九州**有**《》**专题和大家分享，另外由于*ownone*工作太忙了**web.py**的专题将会在4月份继续和大家见面，这期**江湖郎中**会给大家带来**flask**的专题分享。     
+《GNU/Linux Developer》第Alpha4期在春风中来了了，本期**九州**有**《》**专题和大家分享，另外由于*ownone*工作太忙了**web.py**的专题将会在4月份继续和大家见面，这期**cnsworder**会给大家带来**flask**的专题分享。     
 
 前言
 ====
@@ -21,13 +21,45 @@ GNU/Linux Developer
 
 专题一 
 ====================
+**作者: **
+
 
 
 专题二  flask——KISS之美   
 ======================
+**作者: cnsworder**
 
 这个月ownone由于工作原因无法按期与大家分享**web.py**的内容了，我在想找一个相当量级的内容与大家分享，**Django**太笨重了，**tornado**重点在IO，还是**flask**和**bottle**合适，个人对**flask** 稍有些了解，属于严重*入门级别*，所以打肿脸充胖子来和大家分享一下。
 
+flask是什么？当然他不是flash,官网给出的说明：
+> Flask is a microframework for Python based on Werkzeug, Jinja 2 and good intentions. And before you ask: It's BSD licensed!
+
+flask主要
+
+flask的最新版本是0.10。
+
+上官网示例：
+
+```python
+#!/bin/env python
+# file: hello.py
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run()
+```
+解释一下哈，`@app.route("/")`是Werkzeug的路由系统，它是通过python的修饰器来实现的，
+
+运行一下,
+```bash
+python hello.py
+```
+哈哈，就这么简单。
 
 
 资源推荐
