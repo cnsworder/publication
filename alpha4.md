@@ -13,20 +13,20 @@ GNU/Linux Developer
 **微信号： linux_developer**  
 **主编： 猫猫**  
 
-《GNU/Linux Developer》第Alpha4期在春风中来了了，本期**九州**有**《》**专题和大家分享，另外由于*ownone*工作太忙了**web.py**的专题将会在4月份继续和大家见面，这期**cnsworder**会给大家带来**flask**的专题分享。     
+《GNU/Linux Developer》第Alpha4期在春风中来了了，本期**九州**有**大数据**、**android系统定制**两个专题和大家分享，另外由于*ownone*工作太忙了**web.py**的专题将会在4月份继续和大家见面，这期**cnsworder**会给大家带来**flask**的专题分享。     
 
 前言
-====
+-----------
 
 
 专题一 
-====================
+--------------------
 **作者: **
 
 
 
 专题二  flask——KISS之美   
-======================
+-----------------------------
 **作者: cnsworder**
 
 这个月ownone由于工作原因无法按期与大家分享**web.py**的内容了，我在想找一个相当量级的内容与大家分享，**Django**太笨重了，**tornado**重点在IO，还是**flask**和**bottle**合适，个人对**flask** 稍有些了解，属于严重*入门级别*，所以打肿脸充胖子来和大家分享一下。
@@ -38,7 +38,7 @@ flask主要
 
 flask的最新版本是0.10。
 
-上官网示例：
+### 第一个应用
 
 ```python
 #!/bin/env python
@@ -61,10 +61,45 @@ python hello.py
 ```
 哈哈，就这么简单。
 
+### 路由
+
+### 反向路由
+
+`url_for`
+
+### 模板
+
+flask使用的模板系统是作者自己的`jinja2`
+
+模板的语法和django的模板系统差不多
+
+
+### 其他支持
+
+```python
+app.register_module()
+```
+
+flask的最大的亮点就是松耦合，flask只和web层面耦合，除了内置的路由系统和模板系统就没有内置其他功能了，真的很轻量级，但是flask可以快速的接入第三方库来完善自己的功能。
+
+### 生产环境部署
+
+这里我直接使用uwsgi来部署，当然你也可以使用tornado来做前端
+
+### 
+
+最后给出三个官方推荐的示例
+
+https://github.com/mitsuhiko/flask/tree/master/examples/flaskr/
+
+https://github.com/mitsuhiko/flask/tree/master/examples/minitwit/
+
+https://github.com/mitsuhiko/flask/tree/website
 
 资源推荐
 ----------
-
+<voide src="http://ssh.cnsworder.com/void/test.avi"></voide>
+<iframe src="http://v.youku.com/v_show/id_XNjgxNzQyNzI0.html"></iframe>
 
 一段代码
 --------
