@@ -13,7 +13,7 @@ GNU/Linux Developer
 **微信号： linux_developer**  
 **主编： 猫猫**  
 
-《GNU/Linux Developer》第Alpha4期在春风中来了了，本期**九州**有**大数据**、**android系统定制**两个专题和大家分享，另外由于*ownone*工作太忙了**web.py**的专题将会在4月份继续和大家见面，这期**cnsworder**会给大家带来**flask**的专题分享。     
+《GNU/Linux Developer》第Alpha4期在春风中来了了，本期**九州**有**大数据**、**android系统定制**两个专题和大家分享，另外由于*ownone*工作太忙了**web.py**的专题将会在4月份继续和大家见面，这期**江湖郎中**会给大家带来**flask**的专题分享。     
 
 前言
 -----------
@@ -27,7 +27,7 @@ GNU/Linux Developer
 
 专题二  flask——KISS之美   
 --------------------------------------------
-**作者: cnsworder**
+**作者: 江湖郎中**
 
 这个月ownone由于工作原因无法按期与大家分享**web.py**的内容了，我在想找一个相当量级的内容与大家分享，**Django**太笨重了，**tornado**重点在IO，还是**flask**和**bottle**合适，个人对**flask** 稍有些了解，属于严重*入门级别*，打肿脸充胖子来和大家分享一下。
 
@@ -60,6 +60,8 @@ install_requires=[
     ]
 ```
 
+好吧，不说太多的废话了先跑起第一个应用吧。
+
 ### 第一个应用
 
 ```python
@@ -85,9 +87,20 @@ python hello.py
 
 ### 路由
 
+这就是路由，
+```python
+@app.route("/")
+```
+根据路由，flask将http请求交给对应的处理函数
+
+路由是使用修饰器来实现的，比起django和web.py这些使用全局的定义要更灵活，但是萝卜青菜各有所爱，不如他们集中配置方便。
+
 ### 反向路由
 
-`url_for`
+什么是反向路由？
+> 路由是根据地址进行路由，反向路由应该是根据路由得出地址。
+
+它通过`url_for`系列函数来使用
 
 ### 模板
 
@@ -95,6 +108,13 @@ flask使用的模板系统是作者自己的`jinja2`
 
 模板的语法和django的模板系统差不多
 
+```html
+{% base base.html%}
+{% block name%}
+<div>{{user.name}}</div>
+{% endblock%}
+```
+是不是和django的模板一样呢。
 
 ### 其他支持
 
@@ -122,23 +142,40 @@ flask太简单了，以至于我们不得不去自己去做很多事情来使他
 
 资源推荐
 ----------
+[python入门](http://pythontutor.com/)
+
+[docker入门](https://www.docker.io/gettingstarted/#)
+
+[golang入门](http://tour.golang.org/#1)
 
 
 一段代码
 --------
-```
+```bash
+function scaner() {
+   count=0
+   for i in 192.168.0.{110..120};do
+    ¦  ping -c 1 -W 1 $i &> /dev/null
+    ¦  if [[ $? != 0 ]]; then
+    ¦   ¦  echo "${i} 可用"
+    ¦   ¦  #count=$((${count}+1))
+    ¦   ¦  let count++
+    ¦  fi
+   done
+   echo "共${count}个ip可用"
+}
 ```
 
 Tip
 -------
 #### 开发
-
+shared_ptr的内存所有权使用计数器是非独占的，weak_ptr弱引用只引用不计数。
 
 #### 运维
-
+使用virtualenv可以更好的隔离python的版本依赖以便于部署与生产环境
 
 #### 使用
-
+emacs启动慢，通过hosts文件设置本机的机器名对应的ip即可
 
 
 作者简介
