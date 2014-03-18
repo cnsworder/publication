@@ -26,17 +26,39 @@ GNU/Linux Developer
 
 
 专题二  flask——KISS之美   
------------------------------
+--------------------------------------------
 **作者: cnsworder**
 
-这个月ownone由于工作原因无法按期与大家分享**web.py**的内容了，我在想找一个相当量级的内容与大家分享，**Django**太笨重了，**tornado**重点在IO，还是**flask**和**bottle**合适，个人对**flask** 稍有些了解，属于严重*入门级别*，所以打肿脸充胖子来和大家分享一下。
+这个月ownone由于工作原因无法按期与大家分享**web.py**的内容了，我在想找一个相当量级的内容与大家分享，**Django**太笨重了，**tornado**重点在IO，还是**flask**和**bottle**合适，个人对**flask** 稍有些了解，属于严重*入门级别*，打肿脸充胖子来和大家分享一下。
 
 flask是什么？当然他不是flash,官网给出的说明：
-> Flask is a microframework for Python based on Werkzeug, Jinja 2 and good intentions. And before you ask: It's BSD licensed!
 
-flask主要
+> Flask is a microframework for Python based on Werkzeug, Jinja 2 and good intentions. And before you ask: It\'s BSD licensed!
 
-flask的最新版本是0.10。
+github上的说明是:
+
+>  Flask is a microframework for Python based on Werkzeug and Jinja2.  It\'s intended for getting started very quickly and was developed with best intentions in mind.
+
+所以flsak
+
++ 使用Python写的
++ 一个微型框架
++ 建立在Werkzeug和Jinja2基础上
++ 采用BSD协议
++ 能够非常快速高效的开发
+
+flask目前发布的最新版本是0.10。flash是开源项目托管在github上的，如果有兴趣可以直接git代码，地址是: <https://github.com/mitsuhiko/flask>。
+
+flask的对外部的依赖很少，只需要Werkzeug,Jinja2,itsdangerours三个库，在setup.py文件中有定义:
+
+
+```python
+install_requires=[
+    'Werkzeug>=0.7',
+    'Jinja2>=2.4',
+    'itsdangerous>=0.21'
+    ]
+```
 
 ### 第一个应用
 
@@ -86,20 +108,21 @@ flask的最大的亮点就是松耦合，flask只和web层面耦合，除了内�
 
 这里我直接使用uwsgi来部署，当然你也可以使用tornado来做前端
 
-### 
+### 简单即是美
+
+flask太简单了，以至于我们不得不去自己去做很多事情来使他完成我们的任务。某种程度上说他不应该是*框架*而是一个*库*。
 
 最后给出三个官方推荐的示例
 
-https://github.com/mitsuhiko/flask/tree/master/examples/flaskr/
+<https://github.com/mitsuhiko/flask/tree/master/examples/flaskr/>
 
-https://github.com/mitsuhiko/flask/tree/master/examples/minitwit/
+<https://github.com/mitsuhiko/flask/tree/master/examples/minitwit/>
 
-https://github.com/mitsuhiko/flask/tree/website
+<https://github.com/mitsuhiko/flask/tree/website>
 
 资源推荐
 ----------
-<voide src="http://ssh.cnsworder.com/void/test.avi"></voide>
-<iframe src="http://v.youku.com/v_show/id_XNjgxNzQyNzI0.html"></iframe>
+
 
 一段代码
 --------
