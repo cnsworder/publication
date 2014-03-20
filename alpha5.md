@@ -57,17 +57,76 @@ init的历史很久远，早期Linux使用的init有两个版本：`sysV`和`BSD
        - rc.single单用户执行
        - rc.multi2～5执行
        - rc.local是杂项
-       - init系统会安装以上顺序加载运行
+       - init系统会按照以上顺序加载运行
        - rc.conf包含了相关的配置
 
-+ sysV
-       - 配置目录在`/etc/rc.d/rcx.d`其中x表示init号
++ system V
+       - 脚本文件目录在`/etc/init.d/`
+       - `/etc/rc{runlevel}.d`目录标识相应运行级别的目录
        - 目录下的文件以S开头的是启动的服务，以K开头的是不启动的服务
        - 启动标识后紧跟的数字表示启动优先级，数值越小运行越早
        - 通过service命令来起停服务
        - 通过chkconf来管理服务
+       - 通过`/etc/inittab`文件来配置相应的运行级别
 
-以上两种init系统加载的文件本身都是一些脚本文件，通过这些脚本可以加载相应的模块或者启动需要的程序。  
+以上两种init系统加载的文件本身都是一些脚本文件，通过这些脚本可以加载相应的模块或者启动需要的程序。 
+BSD init 具体服务的内容:
+```bash
+#!/bin/sh
+. /etc/rc.subr
+name="dummy"
+start_cmd="${name}_start"
+stop_cmd=":"
+
+dummy_start()
+{
+    echo "Nothing started."
+}
+
+load_rc_config $name
+run_rc_command "$1"
+```
+
+SystemV init具体服务的配置内容：
+```bash
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:          sudo
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:
+# X-Start-Before:    rmnologin
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Provide limited super user privileges to specific users
+# Description: Provide limited super user privileges to specific users.
+### END INIT INFO
+
+N=/etc/init.d/sudo
+
+set -e
+
+case "$1" in
+  start)
+        # make sure privileges don't persist across reboots
+        if [ -d /var/lib/sudo ]
+        then
+                find /var/lib/sudo -exec touch -t 198501010000 '{}' \;
+        fi
+        ;;
+  stop|reload|restart|force-reload|status)
+        ;;
+  *)
+        echo "Usage: $N {start|stop|restart|force-reload|status}" >&2
+        exit 1
+        ;;
+esac
+
+exit 0
+```
+
+从语法角度来看两者没有什么区别。
+
 早期的init系统存在若干问题，比如，无法并行任务，任务之间缺乏有效的通信机制，对进程的监控只能通过PID来进行...
 
 ##### 现代init系统简介
@@ -82,20 +141,72 @@ systemctl来管理systemd，同时也兼容service命令
 所有的systemd配置在`/usr/lib/systemd`目录下,当启动用后会被链接或者拷贝到/etc/systemd目录下
 
 + upstart
-  使用initctl来管理upstart
-  启动级别配置在`/etc/inittab`文件，与BSD和System V不同的是这个文件只有一行`id:3:initdefault`
-  配置项在`/etc/init/`目录下
+  - 使用initctl来管理upstart
+  - 配置项在`/etc/init/`目录下
+  - ubuntu中在`/etc/rc.conf`的最后一行通过`exec /etc/init.d/rc $RUNLEVEL`来启动相应级别系统，debina中是在`/etc/inittab`中添加`id:2:initdefault:`
 
   *我印象中ubuntu的upstart的配置和centos的配置方法是有区别的，这里无法进一步验证。*
 
 
 ##### systemd和upstart的使用
 
+先分别上一段代码,sytemd：
 
+```conf
+[Unit]
+Description=OpenSSH Daemon
+Wants=sshdgenkeys.service
+After=sshdgenkeys.service
+After=network.target
 
+[Service]
+ExecStart=/usr/bin/sshd -D
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+upstart:
+
+```bash
+start on fedora.serial-console-available DEV=* and stopped rc RUNLEVEL=[2345]
+stop on runlevel [S016]
+
+instance $DEV
+respawn
+pre-start exec /sbin/securetty $DEV
+exec /sbin/agetty /dev/$DEV $SPEED vt100-nav
+post-stop exec /sbin/initctl emit --no-wait fedora.serial-console-available DEV=$DEV SPEED=$SPEED
+usage 'DEV=ttySX SPEED=Y  - where X is console id and Y is baud rate'
+``
+
+看出什么区别来了吗？
+
+upstart和systemd是全新的方式，upstart是命令的方式，systemd则是conf形式。
+
+###### systemd
++ `Unit`用来描述服务的相关信息和依赖关系
++ `Service`对服务本身进行描述
++ `Install`说明他的运行环境
++ 运行级别也通过systemd来进行管理
+
+###### upstart
++ 通过`start on runlevel [012345]`和`stop on runlevel [!RUNLEVEL]`来制定具体运行级别
++ 通过`exec`来运行相应的程序
++ 通过`script ... end script`指令可以直接嵌入脚本
+
+一些更加细节的配置请查阅相关手册吧。
 
 我们可以通过`--init=xxx`内核参数来指定所使用的init系统。当然指定的这个init可以是任意的程序，你完全可以直接指定成为你想要的任何程序。
-目前大部分Linux发行版本都已经采用systemd作为默认的init系统，ubuntu现在使用的是upstart系统，而Debain也在投票选择中。
+
+目前大部分Linux发行版本都已经采用systemd作为默认的init系统，ubuntu现在使用的是upstart系统，而Debain也在投票的结果是选择了systemd，ubuntu也宣布会接受debian的上游选择决定。
+
+貌似现在systemd有统一Linux世界init系统的趋势。
+
 
 资源推荐
 ----------
