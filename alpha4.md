@@ -151,20 +151,28 @@ flask太简单了，以至于我们不得不去自己去做很多事情来使他
 
 一段代码
 --------
-```bash
-function scaner() {
-   count=0
-   for i in 192.168.0.{110..120};do
-    ¦  ping -c 1 -W 1 $i &> /dev/null
-    ¦  if [[ $? != 0 ]]; then
-    ¦   ¦  echo "${i} 可用"
-    ¦   ¦  #count=$((${count}+1))
-    ¦   ¦  let count++
-    ¦  fi
-   done
-   echo "共${count}个ip可用"
-}
+上期**ownone**给出了函数方法定义修饰器的方法，偶尔看到了皓哥写的通过类方式定义的方法感觉眼前一亮，现分享给大家
+
+```python
+class Dec(object):
+
+    def __init__(self, tag):
+        self._tag = tag
+
+    def __call__(self, fun):
+
+        def wrapped(*args, **args):
+            fun()
+            return "called"
+        
+        return wrapped
+
+@Dec(tag="b")
+def function():
+    return "functed"
+    
 ```
+
 
 Tip
 -------
