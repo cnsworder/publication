@@ -372,7 +372,7 @@ brunch liberty
 
 编译期间出现的问题大多为依赖包未安装，根据提示安装好即可
 
-**编译完成后会在`/out/target/product/[手机别名]目录生成cm-7-[日期]-UNOFFICIAL-[手机别名].zip`文件，可以使用刷机精灵之类的软件到对应的手机内**
+**编译完成后会在`/out/target/product/[手机别名]目录生成cm-7-[日期]-UNOFFICIAL-[手机别名].zip`，可以使用刷机精灵之类的软件刷机入对应的手机当有应用调 sendTextMessage函数时，就会记录到  /data/data/ilog/smsLog.txt。需求满足**
 
 
 [项目地址]: https://github.com/CyanogenMod/android
@@ -621,11 +621,12 @@ emacs启动慢，通过hosts文件设置本机的机器名对应的ip即可
 --------
 <a name="tj"></a>
 ![Photo](http://ssh.cnsworder.com/img/)  
-网名：   
+网名：九州 
 群ID: 九州  
-微博：<http://>   
-技术：  
-简介：
+微博：<http://t.qq.com/adu_na>   
+技术：偏好c/c++ , 快忘干净的python ，以及工作偶尔用到的 java  
+简介：广州低阶IT人士，做过安卓安全研究，目前从事网络协议分析 ，希望以后能专职开发
+
 - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
 如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha4.md)或[网站](http://ssh.cnsworder.com/alpha4.html)。  
