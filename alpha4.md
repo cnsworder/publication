@@ -401,7 +401,7 @@ github上的说明是:
 + 采用BSD协议
 + 能够非常快速高效的开发
 
-flask目前发布的最新版本是0.10。flash是开源项目托管在github上的，如果有兴趣可以直接git代码，地址是: <https://github.com/mitsuhiko/flask>。
+flask目前发布的最新版本是0.10。flask是开源项目托管在github上的，如果有兴趣可以直接git代码，地址是: <https://github.com/mitsuhiko/flask>。
 
 flask的对外部的依赖很少，只需要Werkzeug,Jinja2,itsdangerours三个库，在setup.py文件中有定义:
 
