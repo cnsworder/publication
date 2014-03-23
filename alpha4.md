@@ -622,7 +622,7 @@ emacs启动慢，通过hosts文件设置本机的机器名对应的ip即可
 <a name="tj"></a>
 ![Photo](http://ssh.cnsworder.com/img/jz.jpg)  
 网名：九州 
-群ID: 九州  
+群ID: [广州]九州  
 微博：<http://t.qq.com/adu_na>   
 技术：偏好c/c++ , 快忘干净的python ，以及工作偶尔用到的 java  
 简介：广州低阶IT人士，做过安卓安全研究，目前从事网络协议分析 ，希望以后能专职开发
