@@ -620,7 +620,7 @@ emacs启动慢，通过hosts文件设置本机的机器名对应的ip即可
 作者简介
 --------
 <a name="tj"></a>
-![Photo](http://ssh.cnsworder.com/img/)  
+![Photo](http://ssh.cnsworder.com/img/jz.jpg)  
 网名：九州 
 群ID: 九州  
 微博：<http://t.qq.com/adu_na>   
