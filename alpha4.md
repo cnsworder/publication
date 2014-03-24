@@ -379,200 +379,58 @@ brunch liberty
 [1]: http://wiki.cyanogenmod.org/w/Devices#type="phone";cmversions="7"
 [2]: http://wiki.cyanogenmod.org/w/Devices#type=%22phone%22;cmversions=%227%22
 
-flask——KISS之美   
+
+不鸟传说
 --------------------------------------------
-**作者: 江湖郎中**
+**作者: 猫猫**
 
-这个月ownone由于工作原因无法按期与大家分享**web.py**的内容了，我在想找一个相当量级的内容与大家分享，**Django**太笨重了，**tornado**重点在IO，还是**flask**和**bottle**合适，个人对**flask** 稍有些了解，属于严重*入门级别*，打肿脸充胖子来和大家分享一下。
+其实原本这是郎中的地盘，后来我看过了九州关于定制android的内容后，灵机一动，就给自己挖了个坑。我是真心的没想到今天会回家这么晚滴……
 
-flask是什么？当然他不是flash,官网给出的说明：
+这一段的本意隆重的推介一下HTC的HD2，也就是Loe，手机界的第一神机。HD2现在还是我调试android程序的不二选择，目前这货里面共存了六个系统，包括一个FFOS和一个WP7.8，外加四个不同版本的android……
 
-> Flask is a microframework for Python based on Werkzeug, Jinja 2 and good intentions. And before you ask: It\'s BSD licensed!
+#### [不死鸟传说](http://www.wangxiaomao.net/?p=1139) 
+>就在HD2价格落到最底点的时候，就在更多人把眼光高高的仰望到硬件越来越眼花缭乱的安卓机的时候，XDA的大神们默默的发布了可以用在HD2上的安卓ROM。其实吧，说实话，能在HD2彻底死亡之前及时的出来安卓ROM，私以为与HTC后续的几款手机，比如G5、G7，用的都是和HD2一样的处理器不无关系。
+[更多](http://www.wangxiaomao.net/?p=1139) 
 
-github上的说明是:
+#### [Wp7加无限制android（NativeSD）刷机方法](http://www.wangxiaomao.net/?p=122) 
+>个人认为，NativeSD是不死鸟最炫丽的羽毛
+>NativeSD也是xda的妖物们弄出来的一套HD2刷机方法，原理上基本就是在tf卡中划分出一个ext4的分区，然后把android的系统解包到这个ext4分区的目录中，再挂载这个目录从而实现启动android的目的。虽然听上去和卡模版的android区别不大，不过NativeSD是直接解包到卡上运行的，理论上说只要卡的速度够快，android的运行速度会超过直刷到ROM中的速度的。[更多](http://www.wangxiaomao.net/?p=122) 
 
->  Flask is a microframework for Python based on Werkzeug and Jinja2.  It\'s intended for getting started very quickly and was developed with best intentions in mind.
+**下面数篇是我自己做的或者改的HD2的NativeSD ROM**
+#### [crane--sense--androi2.3.5](http://www.wangxiaomao.net/?p=1178) 
+>Sense在所有的安卓UI中一直是我的最爱。说不清楚为啥，也许是从WM时代带过来的习惯，也许是因为Sense真的很好用。不过，似乎Sense在伴随着HTC一起沉沦吗？[更多](http://www.wangxiaomao.net/?p=1178)
 
-所以flsak
+#### [peacock--MIUI--android2.3.7](http://www.wangxiaomao.net/?p=1086) 
+>MIUI这个系统一出场就给1.x年代的安卓世界眼前一亮的感觉。那时候安卓的UI着实的丑，被IOS死死地压制，但是走对IOS大规模山寨之路的MIUI算是当年安卓界的异类了——至少用起来简单，不那么难用，响应速度也快。不过正如IOS的UI一样，MIUI这种风格的UI，由于可随意定制性性对差一些，用时间久了会些许有些腻味了。[更多](http://www.wangxiaomao.net/?p=1086)
 
-+ 使用Python写的
-+ 一个微型框架
-+ 建立在Werkzeug和Jinja2基础上
-+ 采用BSD协议
-+ 能够非常快速高效的开发
+#### [swan--CM10.1--androi4.2.2](http://www.wangxiaomao.net/?p=1093) 
+>CM的出现很多大程度上改变了安卓界的格局。原本各手机厂商为了多卖新机型，对老机型系统的支持和更新翻脸就不认账，但是自从有了CM，情况就变成了用户可以不卖手机厂商的帐了——反正不管啥版本的系统，几乎没有CM找不到的。
+资源推荐[更多](http://www.wangxiaomao.net/?p=1093)
 
-flask目前发布的最新版本是0.10。flask是开源项目托管在github上的，如果有兴趣可以直接git代码，地址是: <https://github.com/mitsuhiko/flask>。
+#### [sparrow--deepin--androi4.1.2](http://www.wangxiaomao.net/?p=1112) 
+>深度曾经也算是盗版windows很有地位的一员，自从番茄入狱以后，深度也干起了洗白的大潮。后起的DeepinLinux和SenduOS也算是中规中矩吧，不过似乎用户群双双都不大，另外感觉效果上似乎离MIUI还是有不小的距离。简单的用了下，还算是流畅吧，不过没装什么软件(CM10在不装软件的时候也算得上比较流畅了，装了软件就卡卡卡卡卡……)。[更多](http://www.wangxiaomao.net/?p=1112)
 
-flask的对外部的依赖很少，只需要Werkzeug,Jinja2,itsdangerours三个库，在setup.py文件中有定义:
+#### [ostrich--FireFoxOS](http://www.wangxiaomao.net/?cat=6) 
+>FireFoxOS也算是Linux系手机操作系统的异类了，不过它毕竟是Linux。由于有了各种安卓的前车之鉴，只要是Linux系统的手机操作系统，在HD2这里都可以做成NativeSD的，SO，XDA的大神们果然就做了。[更多](http://www.wangxiaomao.net/?p=1123)
 
-```python
-install_requires=[
-    'Werkzeug>=0.7',
-    'Jinja2>=2.4',
-    'itsdangerous>=0.21'
-    ]
-```
+**外三篇——掘完HD2的坟回来掘G6**
+#### [Legend：制作金卡](http://www.wangxiaomao.net/?p=8) 
+>为什么需要金卡、金卡的作用、是不是可以不用金卡……这些问题我都不想讨论了，说实话，我还真不知道。但是我对金卡的认识是，这东西在某些情况下确实有用，所以就找一张体质好的容量小的卡做一个放那吧，反正小容量的卡一般来说也没多大用处了。OK，我不会告诉你这一章是可以跳过的。[更多](http://www.wangxiaomao.net/?p=8)
 
-好吧，不说太多的废话了先跑起第一个应用吧。
+#### [Legend：刷RUU](http://www.wangxiaomao.net/?p=20) 
+>RUU，是ROM Upgrade Utility英文缩写，意思是ROM升级工具包(即ROM更新实用程序)，它一般由HTC官方发布，在电脑端简单快速地升级手机固件(ROM)的套件。即所谓的官方ROM，官方到不能再官方的ROM。[更多](http://www.wangxiaomao.net/?p=20)
 
-### 第一个应用
+#### [Legend：从RUU中提取ROM](http://www.wangxiaomao.net/?p=24) 
+>[更多](http://www.wangxiaomao.net/?p=24)
 
-```python
-#!/bin/env python
-# file: hello.py
-from flask import Flask
-app = Flask(__name__)
+**番外之番外**
+其实在提取完G6 ROM以后，原本是要写怎么裁剪系统的，后来因为种种原因一直都没写。偶一直都以为偶食言了，今天看了看，原来那时候根本就没有预告要写这个呀，万幸万幸，偶还是个讲信用滴人……
+其实裁剪手机系统是灰常简单的事情，把zip解压缩，把里面的/system/app下面或者/data/app里面的各种不需要的让人恶心的apk删掉，然后这个世界就清净了。
+如果从网上找教程的话，会有很多教程都说最后一步要签名，签名不对无法刷入云云，其实，据我观察，似乎现在的很多手机由于用的recovery并不是有那么严格的限制，所以rom包其实根本就不需要在意签名了，只要rom里面的内容正确，刷机脚本没问题就一切OK……这到底是进步还是倒退？需要签名好像也就是HTC刚开始的机型这么干过吧，后来刷G12的时候，根本就没有G6那样的签名障碍呢。
+android已经让这个世界疯了。一切似乎都变得廉价和触手可得了。
 
-@app.route("/")
-def hello():
-    return "Hello World!"
-
-if __name__ == "__main__":
-    app.run()
-```
-
-解释一下哈，`@app.route("/")`是Werkzeug的路由系统，它是通过python的修饰器来实现的，什么是修饰器吗？上期ownone已经在专题中讲过了，我就不废话了。
-运行一下,
-
-```bash
-python hello.py
-```
-哈哈，就这么简单。通过`app.debug=True`或者`app.run(debug=True)`可以轻松的进入调试模式
-
-### 路由
-
-这就是路由，
-```python
-@app.route("/")
-```
-
-根据路由，flask将http请求交给对应的处理函数
-
-路由系统的可以通过<var_name>的形式轻松与函数的参数结合起来，同时可以限制类型`int`、`float`、`path`，像这样`<int:port_id>`
-
-```python
-@app.route("/user/<name>")
-def name(name):
-    return name
-```
-
-路由是使用修饰器来实现的，比起django和web.py这些使用全局的定义要更灵活，但是萝卜青菜各有所爱，不如他们集中配置方便。
-
-flsak支持完整的Restful接口，路由通过`methods=[GET, PUT]`形式来指定处理的类型，全局对象`request`的`method`可以获得请求类型
-
-### 反向路由
-
-什么是反向路由？
-> 路由是根据地址进行路由，反向路由应该是根据路由得出地址。
-
-它通过`url_for`系列函数可以自动构建出相应的URL来
-
-```python
-url_for("user", name="CROSS")
-```
-
-就会返回
-
-> /user?name=CROSS
-
-通过`redirect(url(`log`))`可以轻松完成请求的转发
-
-### 模板
-
-flask使用的模板系统是作者自己的`Jinja2`
-
-模板的语法和django的模板系统差不多
-
-```html
-<!doctype html>
-<!-- base.htm -->
-<html>
-<body>
-<div>名称:</div>
-{% block name%}
-基础模板的内容
-{% endblock%}
-</body>
-</html>
-```
-
-```html
-<!-- name.html -->
-{% extends base.html%}
-{% block name -%}
-{# 注释:减号是移除空白的 #}
-{% if user %}
-<div>{{user.name}}</div>
-{% else %}
-<div>他没有名字</div>
-{% endif %}
-{% endblock%}
-```
-是不是和django的模板一样呢。
-
-模板的使用也很简单直接使用渲染器就可以
-
-```python
-from flask import  Flask, render_template 
-
-app = Flask(__name__)
-
-class User(object):
-    def __init__(self):
-        self.name = ""
-
-@app.route("/name")
-def name():
-   user = User()
-   user.name = "my_name"
-   return render_template("name.html", user)
-
-if __name__ == "__main__":
-   app.run()
-```
-
-当然Jinja2是一套完整的模板系统，功能足够强大，过滤器、上下文、加载器等高级特性。
-
-### 生产环境部署
-
-这里我直接使用uwsgi来部署，当然你也应该使用nginx或者tornado来做前端。
-
-uwsgi的配置文件支持xml、ini、yaml，个人感觉xml太繁琐了，ini和yaml不错，yaml通过缩进标识关系很有`python范`，所以这里就用yaml来展示一下配置
-
-```yaml
-#flask.yaml
-uwsgi:
-  pythonpath: /opt/flask_test
-  module run.py
-  callable: app
-  processes: 5
-  socket: /tmp/flask.socket
-```
-启动测试
-
-> uwsgi --yaml flask.yaml
-
-成功后可以将启动添加到系统服务中。
-
-### 简单即是美
-
-flask太简单了，以至于我们不得不去自己去做很多事情来使他完成我们的任务。某种程度上说他不应该是*框架*而是一个*库*。
-
-flask虽小但是他通过`request`、`session`等对象漂亮的完成了对web相关的工作
-
-flask的最大的亮点就是松耦合，flask只和web层面耦合，除了内置的路由系统和模板系统就没有内置其他功能了，真的很轻量级，但是flask可以快速的接入第三方库来完善自己的功能。
-
-最后给出三个官方推荐的示例
-
-<https://github.com/mitsuhiko/flask/tree/master/examples/flaskr/>
-
-<https://github.com/mitsuhiko/flask/tree/master/examples/minitwit/>
-
-<https://github.com/mitsuhiko/flask/tree/website>
-
-
-资源推荐
 =============
+
 [python入门](http://pythontutor.com/)
 
 [docker入门](https://www.docker.io/gettingstarted/#)
