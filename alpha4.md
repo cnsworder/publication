@@ -405,7 +405,7 @@ brunch liberty
 
 #### [swan--CM10.1--androi4.2.2](http://www.wangxiaomao.net/?p=1093) 
 >CM的出现很多大程度上改变了安卓界的格局。原本各手机厂商为了多卖新机型，对老机型系统的支持和更新翻脸就不认账，但是自从有了CM，情况就变成了用户可以不卖手机厂商的帐了——反正不管啥版本的系统，几乎没有CM找不到的。
-资源推荐[更多](http://www.wangxiaomao.net/?p=1093)
+[更多](http://www.wangxiaomao.net/?p=1093)
 
 #### [sparrow--deepin--androi4.1.2](http://www.wangxiaomao.net/?p=1112) 
 >深度曾经也算是盗版windows很有地位的一员，自从番茄入狱以后，深度也干起了洗白的大潮。后起的DeepinLinux和SenduOS也算是中规中矩吧，不过似乎用户群双双都不大，另外感觉效果上似乎离MIUI还是有不小的距离。简单的用了下，还算是流畅吧，不过没装什么软件(CM10在不装软件的时候也算得上比较流畅了，装了软件就卡卡卡卡卡……)。[更多](http://www.wangxiaomao.net/?p=1112)
