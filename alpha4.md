@@ -277,7 +277,9 @@ public class LogService extends ILog.Stub {
         }
         DataOutputStream dos=new DataOutputStream(fos);
         StringBuffer stringBuffer=new StringBuffer();
-        stringBuffer.append("Time:").append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date())).append("\r\n");
+        stringBuffer.append("Time:")
+                    .append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS")
+                    .format(new Date())).append("\r\n");
         stringBuffer.append(String.format("FunName:%s", logInfo[0])).append("\r\n");
         stringBuffer.append("Info:").append("\r\n");
         for (int i = 1; i < logInfo.length; ++i) {
@@ -320,7 +322,7 @@ try {
      
 **`frameworks/base/Android.mk`**
 
-```makefile
+```make
 /*
  * open frameworks/base/Android.mk and add following line
  */
