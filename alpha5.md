@@ -170,7 +170,7 @@ WantedBy=multi-user.target
 
 upstart:
 
-```bash
+``` bash
 start on fedora.serial-console-available DEV=* and stopped rc RUNLEVEL=[2345]
 stop on runlevel [S016]
 
@@ -180,7 +180,7 @@ pre-start exec /sbin/securetty $DEV
 exec /sbin/agetty /dev/$DEV $SPEED vt100-nav
 post-stop exec /sbin/initctl emit --no-wait fedora.serial-console-available DEV=$DEV SPEED=$SPEED
 usage 'DEV=ttySX SPEED=Y  - where X is console id and Y is baud rate'
-``
+```
 
 看出什么区别来了吗？
 
@@ -204,6 +204,7 @@ upstart和systemd是全新的方式，upstart是命令的方式，systemd则是c
 目前大部分Linux发行版本都已经采用systemd作为默认的init系统，ubuntu现在使用的是upstart系统，而Debain也在投票的结果是选择了systemd，ubuntu也宣布会接受debian的上游选择决定。
 
 貌似现在systemd有统一Linux世界init系统的趋势。
+
 
 flask——KISS之美   
 --------------------------------------------
