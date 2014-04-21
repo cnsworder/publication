@@ -13,7 +13,7 @@ GNU/Linux Developer
 **主编: 猫猫**  
 **本期编辑： 江湖郎中**  
 
-《GNU/Linux Developer》第**Aplha5**期和大家见面了，本期*我*将为大家带来专题**Linux init系统介绍**。  
+《GNU/Linux Developer》第**Aplha5**期和大家见面了，本期 *我* 将为大家带来专题 **Linux init系统介绍** 和 **flask--kiss之美** ， ownone 将继续 **web.py** 之旅。  
 
 
 本期专题：Linux init系统介绍
@@ -519,7 +519,7 @@ uwsgi的配置文件支持xml、ini、yaml，个人感觉xml太繁琐了，ini�
 #flask.yaml
 uwsgi:
   pythonpath: /opt/flask_test
-  module run.py
+  module: run.py
   callable: app
   processes: 5
   socket: /tmp/flask.socket
@@ -581,7 +581,7 @@ Tip
 > vim `:!%xxd` 查看二进制
 
 作者简介
---------
+---------------
 <a name="tj"></a>
 ![Photo](http://www.gravatar.com/avatar/c1991331b3e8139f3168fdaf71cb65c4.png)  
 网名: cnsworder/crossword<br/>
@@ -591,7 +591,8 @@ blog: <http://blog.csdn.net/cnsword>
 微博: <http://www.weibo.com/cnsworder>  
 技术: Linux C/C++ Python Golang    
 简介: 专注于Linux智能设备与云的开发  
-- - -
+
+- - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
 如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha5.md)或[网站](http://docs.cnsworder.com)。  
 我们在github上开放编辑希望大家能参与到其中。
