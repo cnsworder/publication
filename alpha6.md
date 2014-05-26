@@ -28,11 +28,6 @@ git gui
 
 资源推荐
 ----------
-[酷壳](http://coolshell.cn/)    陈皓哥为大家推荐的技术文档，内容很丰富。
-
-[iOS安全攻防](http://blog.csdn.net/column/details/hackingios.html): 美女程序员吴茜的大作，分析iOS数据窃取与防范的好文章。 
-
-[Android安全攻防](http://blog.csdn.net/yiyaaixuexi/article/category/1302842): 美女的另一大作，介绍android安全机制SEAndroid。
 
 一段代码
 --------
@@ -48,21 +43,11 @@ git gui
 Tip
 -------
 #### 开发
-   python的编码问题是一个老大难的问题，所以提议
-   * 使用字符编码声明，并且同一工程中的所有源代码文件使用相同的字符编码声明。
-   * 抛弃str，全部使用unicode
-
-    python和我们的os交互的时候，使用unicode会自动使用locale的方言，我们就不用为了系统使用什么方言而恼火。
 
 #### 运维
-> 使用logrotate管理日志，通过logrotate来将日志截断，打包，方便以后查看。
 
 #### 使用
-> vim `:!%xxd` 查看二进制
 
-Next
------------------
-<video src="http://docs.cnsworder.com/img/evil.mp4"></video>
 
 作者简介
 ---------------
