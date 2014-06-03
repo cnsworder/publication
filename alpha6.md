@@ -257,12 +257,32 @@ Switch/Checkout菜单，窗口中默认选中的就是Branch，在后面已经�
 
 资源推荐
 ----------
+本期推荐的是git客户端！
+
+[sourcetree](http://www.sourcetreeapp.com/): atlassian出品的精品。
+
+[smartgithg](http://www.syntevo.com/smartgithg/): 三平台通杀的git和Mercurial的客户端
+
+[github](https://mac.github.com/): github的客户端，个人感觉不好用
+
+`tig`: 纯文本的，个人正在使用，强烈推荐
+
+`egg`: emacs的插件
+
+`git.zip`: vim的插件
+
+`egit`: eclipse的插件
 
 一段代码
 --------
 
 ``` python
-    
+#!env python2
+#encoding=utf-8
+"""
+__init__.py 导出包内模块
+"""
+__all__ = ["module1", "module2"]
 ```
 
 Tip
