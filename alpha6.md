@@ -122,7 +122,7 @@ git仅仅是一个分布式版本管理系统，但是它却改进的却不仅�
 
 ### git flow
 
-![gitflow](http://ihower.tw/blog/wp-content/uploads/2011/02/Screen-shot-2009-12-24-at-11.32.03.png)
+![gitflow](http://docs.cnsworder.com/img/flow.png)
 
 我们看图说话。
 
@@ -146,7 +146,7 @@ git flow <command> finish [OPT]
 你的使用过程如下：
 
 
-![gitflow-command](http://danielkummer.github.io/git-flow-cheatsheet/img/git-flow-commands.png)
+![gitflow-command](http://docs.cnsworder.com/img/git-flow-commands.png)
 
 ### 使用git来完成敏捷开发的闭环
 
@@ -190,19 +190,18 @@ gitflow虽好，但不是万能的，且有很多的局限性能，并且如果�
 
 ### git走查代码
 
-通过强制的限制可以在代码通过审核之前不能进入主干分支。你可以使用git
-
-而达到每一行都能查找到对应的提交说明的方式，在走差过程中成为了有效的利器。由 `git blame` 查看响应行的提交HASH，由`git log HASH`来查看提交记录，从而使走查跟踪变得有效。
+通过强制的限制可以在代码通过审核之前不能进入主干分支。你可以使用git达到每一行都能查找到对应的提交说明的方式，在走差过程中成为了有效的利器。由 `git blame` 查看响应行的提交HASH，由`git log HASH`来查看提交记录，从而使走查跟踪变得有效。
 
 
 ### 开源社区使用git协作
 
-github上对代码进行管理，review，通知;
-邮件和irc进行即使交流;
-trello上做任务管理;
-google doc进行文档的协同编辑;
-产品可以快速的发布到云服务平台上;
-距离不是问题，问题是交流产生了问题。目前有很多的免费的小团队的协作工具，国内比较有名的是tower.im
++ github上对代码进行管理，review，通知;
++ 邮件和irc进行即使交流;
++ trello上做任务管理;
++ google doc进行文档的协同编辑;
++ 产品可以快速的发布到云服务平台上;
++ 距离不是问题，问题是交流产生了问题。
++ 目前有很多的免费的小团队的协作工具，国内比较有名的是tower.im
 
 git gui
 ---------------------------
@@ -215,17 +214,17 @@ git gui
 
 #### 1. 在空目录中列出来的右键菜单
 
-![空目录中的git和svn](image/git/01.png)
+![空目录中的git和svn](http://docs.cnsworder.com/img/git/01.png)
 
 仅仅是因为Git中checkout变成了clone而已，其他部分很大程度的保持了一样。
 
 #### 2. 在已经存在版本信息的目录中的右键菜单
 
-![已经存在版本控制信息的目录中的svn](image/git/05.png)![已经存在版本控制信息的目录中的git](image/git/06.png)
+![已经存在版本控制信息的目录中的svn](http://docs.cnsworder.com/img/git/05.png)![已经存在版本控制信息的目录中的git](http://docs.cnsworder.com/img/git/06.png)
 
 #### 3. 已经存在版本控制信息的目录中的详细菜单
 
-![已经存在版本控制信息的目录中的svn](image/git/02.png)![已经存在版本控制信息的目录中的git](image/git/03.png)
+![已经存在版本控制信息的目录中的svn](http://docs.cnsworder.com/img/git/02.png)![已经存在版本控制信息的目录中的git](http://docs.cnsworder.com/img/git/03.png)
 
 通过以上几张图的比较可以看出，虽然其实仔细看会发现工作原理和流程是完全不同的，但是同样的这个系列的工具延续使用下来，从TortoiseSVN换到TortoiseGit基本不会感到有任何的不适应。
 
@@ -237,7 +236,7 @@ git gui
 
 第一次使用TortoiseGit或者在TortoiseGit的Settings菜单中，可以找到设置msysgit可执行文件路径的地方
 
-![设置msysgit](image/git/09.png)
+![设置msysgit](http://docs.cnsworder.com/img/git/09.png)
 
 注意，设置这个路径是，一定要指向到msysgit的bin目录下，否则是无法找到正确的可执行文件的。设置好以后，可以点击Check now按钮，如果能如上图那样显示版本信息，即说明msysgit的可执行目录设置成功。
 
@@ -247,13 +246,13 @@ P.S. [msysgit的下载地址](http://msysgit.github.io/)
 
 第一次提交或者在TortoiseGit的Settings菜单中，可以找到对作者信息的设置，主要包括作者的名字和邮件地址。如果在提交是勾选了Set author复选框，那么就会将这里设置的作者名字自动添加进去。目前据猜测，这个名字和邮件地址应该不需要和在GIT服务器上注册时使用的用户名和邮件地址相同，简而言之，这个名字和邮件地址应该是可以随便写的。
 
-![设置作者名字和邮件地址](image/git/10.png)
+![设置作者名字和邮件地址](http://docs.cnsworder.com/img/git/10.png)
 
 #### 3. 下载已经存在的仓库
 
 在没有记录版本信息的目录中选在右键菜单中的Git Clone，会得到如下图的窗口
 
-![下载已经存在的仓库](image/git/04.png)
+![下载已经存在的仓库](http://docs.cnsworder.com/img/git/04.png)
 
 URL框中是要下载的仓库的地址，ssh只是其中的一种协议罢了，更高大上的会有https等其他协议。以后计划会专门有Git服务器的搭建系列，里面会对支持不同协议的服务器进行分别介绍，本文仅仅是对神龟GIT的简单使用的介绍，过多深入的内容就不涉及了。
 
@@ -265,7 +264,7 @@ Directory框中是仓库下载到本地的目录位置，这就不需要过多�
 
 这里的提交会出现一个类似TortoiseSVN的窗口，如图
 
-![提交](image/git/07.png)
+![提交](http://docs.cnsworder.com/img/git/07.png)
 
 使用方法与TortoiseSVN基本相同，在Message框中输入本次提交的注释内容，文件列表中选再要提交更改的文件。
 
@@ -273,13 +272,13 @@ Directory框中是仓库下载到本地的目录位置，这就不需要过多�
 
 还有一个不同点，Set commit date和Set author两个复选框，如果勾上的话会自动设置提交的时间和作者，这也算对TortoiseSVN中一个遗憾地弥补了。
 
-![自动设置时间和作者](image/git/08.png)
+![自动设置时间和作者](http://docs.cnsworder.com/img/git/08.png)
 
 #### 5. 将更改的内容同步到GIT服务器
 
 GIT是一个分布式的版本管理工具，也就是说除了GIT服务器自身作为一个集中管理的最高存在，在开发者的机器上，还会存在一个最高存在的分身。上面所说的提交，其实仅仅是更改的内容提交到了本地的服务器中，并不会对真正GIT服务器做任何的更改，除非……
 
-![push](image/git/11.png)
+![push](http://docs.cnsworder.com/img/git/11.png)
 
 Push操作的时候，会自动匹配当前工作目录中的Branch把本地服务器中的更改同步到GIT服务器上的对应Branch中。例如上图中，就是将本地的master的更改提交到GIT服务器中的master分支。当然，Remote这里是可以改的。
 
@@ -287,7 +286,7 @@ Push操作的时候，会自动匹配当前工作目录中的Branch把本地服�
 
 #### 6. 将GIT服务器中的最新内容更新到本地
 
-![push](image/git/12.png)
+![push](http://docs.cnsworder.com/img/git/12.png)
 
 Pull很形象，与“推”相反的就是“拉”。
 
@@ -297,7 +296,7 @@ Pull的时候也会自动匹配工作目录中的Branch而选择GIT服务器中�
 
 留心观察的话，会发现在GIT的菜单中还有个Git Sync，其实这里是把一些常用的操作比如Push和Pull集合到了一起，如图
 
-![sync](image/git/13.png)
+![sync](http://docs.cnsworder.com/img/git/13.png)
 
 好吧，我会告诉你们我一点都不喜欢这个，我还是喜欢自己去Push或者Pull。
 
@@ -305,7 +304,7 @@ Pull的时候也会自动匹配工作目录中的Branch而选择GIT服务器中�
 
 既然前面说了分支在GIT体系中的重要性，那么切换分支就是无论再怎么简单的介绍都无法绕过的内容了。
 
-![switch checkout](image/git/14.png)
+![switch checkout](http://docs.cnsworder.com/img/git/14.png)
 
 Switch/Checkout菜单，窗口中默认选中的就是Branch，在后面已经激活的列表中选择要切换到的分支即可。同理，下面的Tag和Commit两个单选也是一样的作用。
 
@@ -313,19 +312,19 @@ Switch/Checkout菜单，窗口中默认选中的就是Branch，在后面已经�
 
 取消本次的修改内容，将选中本地文件恢复到服务器中的最新版的状态。这个要谨慎使用，因为一旦Revert，本地所做的未提交的修改都会丢失。
 
-![revert](image/git/15.png)
+![revert](http://docs.cnsworder.com/img/git/15.png)
 
 #### 10. Clean up
 
 如果出现无法提交的情况，大多数情况下，Clean up都是可以解决的，大不了就是多组合几次选项试试呗。最后实在无法解决的话，还有大招——换个目录重新下载最新的然后人工合并……
 
-![clean up](image/git/16.png)
+![clean up](http://docs.cnsworder.com/img/git/16.png)
 
 #### 11. Show log
 
 显示更新的历史记录。
 
-![show log](image/git/17.png)
+![show log](http://docs.cnsworder.com/img/git/17.png)
 
 在列表中的某次更新上右键还会有更详细的菜单弹出的，详情且听下回分解。
 
@@ -333,7 +332,7 @@ Switch/Checkout菜单，窗口中默认选中的就是Branch，在后面已经�
 
 查看服务器的文件结构。这应该是目前为止，我觉得跟TortoiseSVN比较起来变化最大的一个部分了。不过转到GIT以后，似乎这个broswer用的相当的少了，为啥？
 
-![repo-broswer](image/git/18.png)
+![repo-broswer](http://docs.cnsworder.com/img/git/18.png)
 
 #### 13. Diff
 
@@ -343,7 +342,7 @@ Switch/Checkout菜单，窗口中默认选中的就是Branch，在后面已经�
 
 如果选择目录进行Diff，会列出本地的当前目录和服务器上对应目录的全部不同的文件
 
-![diff](image/git/19.png)
+![diff](http://docs.cnsworder.com/img/git/19.png)
 
 然后选择要查看的文件，右键中有Compare with base，可以实现和选中单个文件进行Diff一样的效果。
 
