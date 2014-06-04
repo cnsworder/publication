@@ -122,7 +122,7 @@ git仅仅是一个分布式版本管理系统，但是它却改进的却不仅�
 
 ### git flow
 
-![gitflow](http://docs.cnsworder.com/img/flow.png)
+![gitflow](http://docs.cnsworder.com/img/git/flow.png)
 
 我们看图说话。
 
@@ -146,7 +146,7 @@ git flow <command> finish [OPT]
 你的使用过程如下：
 
 
-![gitflow-command](http://docs.cnsworder.com/img/git-flow-commands.png)
+![gitflow-command](http://docs.cnsworder.com/img/git/git-flow-commands.png)
 
 ### 使用git来完成敏捷开发的闭环
 
