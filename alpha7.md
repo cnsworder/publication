@@ -23,92 +23,184 @@ GNU/Linux Developer
 面向对象的C
 -------------------
 **作者：江湖郎中**  
+C是面向过程的语言这是大家都知道的，但是我们同样可以使用C来写出面向对象风格的代码来，最典型的例子就是GTK+了，个人认为它通过模拟面向对象的风格已经到了极致。当然kernel中也有很多这样的例子，但是我不想强加 `OOP` 的概念给它，因为它还有更深的设计理念。
+
+OK, 面向对象编程的三个基本概念 `封装` ， `继承` ，`多态`。我会简单的结合GTK+的实现来说明如何用C 来实现 OOP。
+
+### 继承
+
+大家都懂的，继承具体要表达的内容是 `聚合` 和 `组合` 。而设计模式中曾经告诫大家优先使用组合方式来表达集成某些属性而不是继承。C 
+
+``` C
+typedef struct Base
+{
+    int id;
+}base_t;
+
+typedef struct Super
+{
+    Base;
+    char data[];
+}super_t;
+
+super_t super;
+super.id = 12;
+
+``` 
+
+### 多态
+
+``` C
+typedef struct Mu
+{
+    void (* test)();
+}mu_t;
+
+void test_a()
+{
+    printf("testA");
+}
+
+void test_b()
+{
+    printf("testB");
+}
+
+mu_t my_mu;
+my_mu.test = test_a;
+
+my_mu.test();
+
+my_mu.test = test_b;
+
+```
+多态就这么容易的实现了，没有虚函数表的性能损耗。
 
 
-泛化的C++
+### OOP
+
+类的概念和对象的概念在很多OOP语言中感觉已经被很多人所混淆，而C来实现却需要分清楚，并且基于此将OOP的更低层次的一个概念隔离变化
+
+
+
+现代化C++
 ---------------
 **作者：江湖郎中** 
 
+什么是现代的C++? 
+
+C++标准化之前的C++自然不是现代化的C++，C++98也不是，而C++03引入了模板机制，并被发现是具有 `图灵完备` 的，为现代的C++奠定了基础，C++11和C++14逐步添加了泛函编程的特性，使得C++真正成为现代化的编程语言，而C++最终成为了现代化的C++。
+
+### 模板元
+
+模板元编程
+
+写一个简单的std::function实现，当然他很简陋。
+
+``` c++
+template<typename T>
+class function_base
+{
+public:
+    function_base(T &&fn){fun = std::forward(fn);}
+    ~function_base(){}
+
+    template<typename ...Args>
+    void operator()(Args... args){fun_(args...);}
+
+    void operator()(){fun_();}
+
+private:
+    T fun_;
+};
+```
+
+
+
+模板元是编译期确定的，所以他不会损耗性能，这一点要优于有些语言比如C#，java所实现的泛型。
+
+如何高效的实现一个Fabic表达式？好吧, C++11就这么简单。
+
+``` c++
+```
+
+### 泛函
+
+泛函数编程的最主要的表现是函数是第一类对象 `First-Class Object` 。
+
+auto, dectltype, result_of借助编译器的推导能力，添加lambda表达式，更好的实现闭包的特性。
+
+#### 函数可以存入变量
+
+``` C++
+auto fun = [=](int a)->int{return a;};
+```
+
+#### 可以作为参数传递为其他函数
+
+``` C++
+void todo(auto fun)
+{
+    fun();
+}
+```
+
+#### 可以被作为函数的返回值
+
+``` C++
+auto get_fun(auto fun) -> dectltype(fun)
+{
+    return fun;
+}
+```
+
+#### 即使没有名称也可以存在 && 运行期来创建
+
+``` C++
+[](){return 0;}();
+```
+
+在原始的C,C++中可以把函数通过函数指针将函数作为参数或者返回值，也可以传递给一个指针左值，但是无法创建匿名函数和通过运行期来创建函数。而C++11加入了lambda表达式后这一些成为了可能。
+
+
+个人参考C++11标准废弃的很多特性足以彻底改变C++语言(比如模块、概念)，但是正是因为改变所以被废弃掉了。C++真正的活力不在于它是多么的现代化，而在于它是多范式的，你既可以用面向过程的C来写代码（对C99的支持还有待提高啊），也可以用模板机制来写泛型代码，更可以在C++11以后写出泛函的代码。八卦一下，golang就是因为它爹因为要把很多特性提交到C++标准中没有被通过所有就写了一个golang~~~。嗯，下面我们来看一下golang。
+
 大家学golang
 -------------- 
+首先说golang有些语法是反C的，不过始终没有脱离C。
 
+### 关键字
+
+>>
+
+### 变量
+
+### 函数
+
+### 语句
+
+### 结构体
+
+### 接口
+
+### 
 
 资源推荐
 ----------
-《集体智慧编程》：该书完全使用简单易用的python语言描述，为入门者简直是揭开了一层朦胧的面纱。本人也是其中的受益者，所以有兴趣的可以先阅读本书。  
-另外专题中用到的代码和讲解内容也是来自于此书。  
-[pythonxy](https://code.google.com/p/pythonxy)：一个集成了很多科学计算工具的python版本。本专题的代码虽然都是自己实现，但是也可以通过scipy库中的一些封装好的函数库去实现。其实现更加合理科学。  
-[pycharm](http://www.jetbrains.com/pycharm)：个人用过的觉得是最好的python IDE，或许，用多了会上瘾的感觉，（收费的商业版，当然也有社区版。。。怎么使用就看你们的方式了）  
-[mahout](http://mahout.apache.org)：一款由java编写的机器学习的库，能够跟hadoop完美的融合，对于大数据的机器学习非常的好，在企业的具体应用中也开始在用了，至于为什么给大家推荐呢，  
 
-不是因为作为一个代码库可以偷懒，我一直的原则都是，能够做得出的才去偷懒，不然就勤快点，主要是因为本期演示的数据非常的少，所以没有什么影响，但是真正应用中的话数据量是非常大的，试想下，如果以淘宝或者亚马逊的交易商品来做推荐，那么多数据，如果自己写代码一个个去跑，该跑到什么时候。。。
 
 一段代码
 --------
 ``` python
-#!/usr/env python
-import socket
-from smtplib import *
-from email import *
-"""
-   上一期，通过bash脚本借助curl获取ifconfig.me返回的地址并发送邮件，
-   这一期我们用python实现借助dnspod来获取外网ip地址并发送邮件
-"""
-def get_ip():
-    sock = socket.create_connection(('ns1.dnspod.net', 6666))
-    ip = sock.recv(16)
-    sock.close()
-    return ip
- 
-def send_mail():
-   s = SMTP()
-   s.connect("smtp.xxx.com")
-   s.login("xx@xx.com", "xx")
-   msg = mime.Multipart.MIMEMultipart()
-   msg['Subject'] = u"RaspberryPi IP"
-   msg['From'] = "xx@xx.com"
-   msg['To'] = 'xx@xx.com'
-   text = "Your home IP: " + get_ip()
-   msg.attach(mime.Text.MIMEText(text, "plain", "utf-8"))
-   se = s.sendmail("xx@xx.com", ['xx@xx.com'], msg.as_string())
-   s.quit()
-```
 
-开源吉祥物
---------
-![beasties](http://ssh.cnsworder.com/img/daemon-tux-hexley.png)  
-FreeBSD: Beastie  
-Linux: Tux  
-darwin: Hexley
+```
 
 Tip
 -------
-#### 开发
-> read、write默认是不带缓冲的  
-> fread、fwrite默认是带缓冲的  
-
-   
-
-> `int fileno(FILE *stream)`可以将文件指针转换成文件描述符  
-> `FILE *fdopen(int fd, const char *mode)`将文件描述符转换成文件指针  
-
-#### 运维
-> tmux和screen可以在远程断开后继续运行
-
-#### 使用
-> `fedup --network 20` 将fedora升级到最新的20
 
 
-作者简介
---------
-<a name="tj"></a>
-![Photo](http://ssh.cnsworder.com/img/weiyi.jpg)  
-网名： 唯一<br/>
-群ID: [广州]唯一   
-微博：<http://www.weibo.com/sadlin>  
-技术：java、搜索引擎   
-简介：广州小小程序员。喜欢折腾代码。。  
+ 
 - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
-如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha2.md)或[网站](http://ssh.cnsworder.com/alpha2.html)。  
+如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha7.md)或[网站](http://ssh.cnsworder.com/alpha7.html)。  
 我们在github上开放编辑希望大家能参与到其中。
