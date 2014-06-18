@@ -9,13 +9,12 @@
 GNU/Linux Developer
 ==============================================================  
 
-**Aplha7**  
-**kernel stable： 3.13**  
-**QQ群号： 20506135**  
-**微信号： linux_developer**  
-**主编： 猫猫**  
+**Version: Aplha7** 
+**QQ群号: 20506135**  
+**微信号: linux_developer**  
+**主编: 猫猫**  
 
-《GNU/Linux Developer》第**Aplha7**期在春节前和大家见面了，本期将为大家带来专题**面向对象的C** 和 **泛化的C++**。  
+《GNU/Linux Developer》第 **Aplha7** 期发布了，本期将为大家带来专题 **面向对象的C** 和 **泛化的C++** 。  
 
 专题分享
 ==============
@@ -26,6 +25,36 @@ GNU/Linux Developer
 C是面向过程的语言这是大家都知道的，但是我们同样可以使用C来写出面向对象风格的代码来，最典型的例子就是GTK+了，个人认为它通过模拟面向对象的风格已经到了极致。当然kernel中也有很多这样的例子，但是我不想强加 `OOP` 的概念给它，因为它还有更深的设计理念。
 
 OK, 面向对象编程的三个基本概念 `封装` ， `继承` ，`多态`。我会简单的结合GTK+的实现来说明如何用C 来实现 OOP。
+
+先看一下段Gtk写的代码
+
+``` C
+#include <gtk/gtk.h>
+#include <libintl.h>
+
+#defin _(x) gettext(x)
+
+int main(int argc, char *argv[])
+{
+    GtkWidget *window, *button, *vbox;
+
+    gtk_init(&argc, &argv);
+
+    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    button = gtk_button_new_with_label(_("Hello World"));
+    vbox = gtk_vbox_new(FALSE, 0);
+
+    gtk_container_add(GTK_CONTAINER(window), vbox);
+    gtk_container_add(GTK_CONTAINER(vbox), button);
+
+    gtk_widget_show_all(window);
+    gtk_main();
+    return 0;
+}
+
+```
+
+Gtk 是怎么实现的呢？好吧，那我们一步一步的来吧。
 
 ### 继承
 
@@ -53,7 +82,7 @@ super.id = 12;
 ``` C
 typedef struct Mu
 {
-    void (* test)();
+    void (* func)();
 }mu_t;
 
 void test_a()
@@ -67,11 +96,11 @@ void test_b()
 }
 
 mu_t my_mu;
-my_mu.test = test_a;
+my_mu.func = test_a;
 
-my_mu.test();
+my_mu.func();
 
-my_mu.test = test_b;
+my_mu.func = test_b;
 
 ```
 多态就这么容易的实现了，没有虚函数表的性能损耗。
@@ -81,7 +110,44 @@ my_mu.test = test_b;
 
 类的概念和对象的概念在很多OOP语言中感觉已经被很多人所混淆，而C来实现却需要分清楚，并且基于此将OOP的更低层次的一个概念隔离变化
 
+#### 定义类
 
+``` C
+typedef struct Class
+{
+   GObjectClass base;  
+}base_class_t;
+```
+
+#### 定义对象
+
+``` C
+typedef struct Object
+{
+    base_class_t *class;
+}base_object_t;
+```
+
+#### 实例化
+
+``` C
+base_object_t *Object_new()
+{
+   static base_class_t *class = (base_class_t *)malloc(sizeof(base_class_t));
+   base_object_t *object = (base_object_t *)malloc(sizeof(base_object_t));
+   object->class = class;
+
+   return object;
+}
+```
+
+当第一实例化时会分配Class一次，然后每次实例化都会分配Objct。Gtk 有更优雅的实现，但是封装层级有点高，就不展开了，直接展示自己理解的部分。
+
+### 封装
+
+其他面向对象的特性实现起来感觉很简单，但是 `封装` 这个概念如果说他是 `public`, `private`, `protected`的话，那真的不好去实现，我们顶多是不把对应的struct定义放到.h中来达到隐藏的效果。但是 `封装` 的概念不仅仅是隐藏，更是包裹不变，提供对变化的扩展。
+
+Gtk 提供了不少的宏来简化我们的工作，当然为了更好的理解C来写面向对象的原理就不深究了。
 
 现代化C++
 ---------------
@@ -163,27 +229,8 @@ auto get_fun(auto fun) -> dectltype(fun)
 在原始的C,C++中可以把函数通过函数指针将函数作为参数或者返回值，也可以传递给一个指针左值，但是无法创建匿名函数和通过运行期来创建函数。而C++11加入了lambda表达式后这一些成为了可能。
 
 
-个人参考C++11标准废弃的很多特性足以彻底改变C++语言(比如模块、概念)，但是正是因为改变所以被废弃掉了。C++真正的活力不在于它是多么的现代化，而在于它是多范式的，你既可以用面向过程的C来写代码（对C99的支持还有待提高啊），也可以用模板机制来写泛型代码，更可以在C++11以后写出泛函的代码。八卦一下，golang就是因为它爹因为要把很多特性提交到C++标准中没有被通过所有就写了一个golang~~~。嗯，下面我们来看一下golang。
+个人参考C++11标准废弃的很多特性足以彻底改变C++语言(比如模块、概念)，但是正是因为改变所以被废弃掉了。C++真正的活力不在于它是多么的现代化，而在于它是多范式的，你既可以用面向过程的C来写代码（对C99的支持还有待提高啊），也可以用模板机制来写泛型代码，更可以在C++11以后写出泛函的代码。八卦一下，golang就是因为它爹因为要把很多特性提交到C++标准中没有被通过所有就写了一个golang~~~。
 
-大家学golang
--------------- 
-首先说golang有些语法是反C的，不过始终没有脱离C。
-
-### 关键字
-
->>
-
-### 变量
-
-### 函数
-
-### 语句
-
-### 结构体
-
-### 接口
-
-### 
 
 资源推荐
 ----------
