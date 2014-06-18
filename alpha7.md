@@ -185,9 +185,30 @@ private:
 
 模板元是编译期确定的，所以他不会损耗性能，这一点要优于有些语言比如C#，java所实现的泛型。
 
-如何高效的实现一个Fabic表达式？好吧, C++11就这么简单。
+如何高效的实现一个Fabic表达式？好吧, C++11就这么简单,并且结果是在编译期就已经推演出来了，运行时直接得到结果，这运行期的性能～～～
 
 ``` c++
+template<>
+class Fibonacci<1> {
+public:
+     static int value;
+};
+int Fibonacci<1>::value = 1 ;
+
+template<>
+class Fibonacci<0> {
+public:
+    static int value;
+};
+int (Fibonacci<0>::value) = 0;
+
+template<int N>
+class Fibonacci {
+public:
+    static int value;
+};
+template<int N> int Fibonacci<N>::value = Fibonacci<N-1>::value +  Fibonacci<N-2>::value;
+
 ```
 
 ### 泛函
