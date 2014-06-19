@@ -32,7 +32,7 @@ OK, 面向对象编程的三个基本概念 `封装` ， `继承` ，`多态`。
 #include <gtk/gtk.h>
 #include <libintl.h>
 
-#defin _(x) gettext(x)
+#define _(x) gettext(x)
 
 int main(int argc, char *argv[])
 {
