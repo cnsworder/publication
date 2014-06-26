@@ -261,7 +261,7 @@ auto get_fun(auto fun) -> dectltype(fun)
 
 资源推荐
 ----------
-[cpp reference](http://www.cppreference.com): c++函数查询
+[cpp reference](http://www.cppreference.com): c++函数查询  
 [cplusplus](http://www.cplusplus.com): c++官网
 
 一段代码
