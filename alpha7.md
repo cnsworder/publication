@@ -4,8 +4,6 @@
     hljs.initHighlightingOnLoad();
 </script>
 
-![Tux](http://ssh.cnsworder.com/img/tux.png)
-
 GNU/Linux Developer
 ==============================================================  
 
@@ -263,20 +261,36 @@ auto get_fun(auto fun) -> dectltype(fun)
 
 资源推荐
 ----------
-
+[cpp reference](http://www.cppreference.com): c++函数查询
+[cplusplus](http://www.cplusplus.com): c++官网
 
 一段代码
 --------
-``` python
+
+``` c++
+pthread_t current_thread;
+std::function<void *(void *)> func = std::bind(fu_, this, _1);
+pthread_create(&current_thread, NULL, func, NULL);
 
 ```
 
 Tip
 -------
 
+### vim
+
+`Ctrl+o`、`Ctrl+[`、`Ctrl+c` 都可以替代 `Esc` 来退出插入模式
+
+### emacs
+
+`speedbar`默认是在frame意外打开的，`sr-speedbar`插件可以将其集成到frame中
+
+### shell
+
+`Ctrl+x Ctrl+e` 可以快速打开编辑器
 
  
 - - -
 欢迎群成员自荐自己的blog文章和收集的资源，发[邮件](mailto:cnsworder@gmail.com)给我，如果有意见或建议都可以mail我。  
-如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha7.md)或[网站](http://ssh.cnsworder.com/alpha7.html)。  
+如果无法直接在邮件内查看，请访问[github上的页面](https://github.com/cnsworder/publication/blob/master/alpha7.md)或[网站](http://ssh.cnsworder.com/)。  
 我们在github上开放编辑希望大家能参与到其中。
