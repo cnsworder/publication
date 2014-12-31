@@ -7,13 +7,13 @@
 GNU/Linux Developer
 ==============================================================  
 
-**Version: Aplha5**  
+**Version: Alpha5**  
 **QQ群号： 20506135**  
 **微信号： linux_developer**  
 **主编: 猫猫**  
 **本期编辑： 江湖郎中**  
 
-《GNU/Linux Developer》第**Aplha5**期和大家见面了，本期 *我* 将为大家带来专题 **Linux init系统介绍** 和 **flask--kiss之美** ， ownone 将继续 **web.py** 之旅。  
+《GNU/Linux Developer》第**Alpha5**期和大家见面了，本期 *我* 将为大家带来专题 **Linux init系统介绍** 和 **flask--kiss之美** ， ownone 将继续 **web.py** 之旅。  
 
 
 本期专题：Linux init系统介绍
@@ -27,7 +27,7 @@ GNU/Linux Developer
 ##### 系统启动
 
 + PC
-设备在上电以后会在指定的位置来运行某段代码，这个位置`0xFFFF0`就是固化在主板上的BIOS（现在是UEFI了），BOIS自检后会从磁盘的某个位置加载程序，如果mbr分区会运行位于磁盘0道0柱1扇区上512字节的mbr程序，mbr程序会通过446+1字节的位置读取64字节的分区表，并在boot标志的分区上加载bootload，一般会使grub、lilo。UEFI引导的情况下，UEFI会直接到GPT分区的fat文件系统下找到efi的引导文件并加载，这个文件会加载grub或者其他引导（lilo是否支持有待验证）。grub本身是一个缩减版的内核，grub本身会包含stage1,stage1.5，stage2 三步。它通过kernel指令加载kernel(grub2是linux指令) vmlinuz文件并传递给内核启动参数，通过initrd指令加载ram disk文件，然后内核就被加载进内存中运行了。
+设备在上电以后会在指定的位置来运行某段代码，这个位置`0xFFFF0`就是固化在主板上的BIOS（现在是UEFI了），BOIS自检后会从磁盘的某个位置加载程序，如果mbr分区会运行位于磁盘0道0柱1扇区上512字节的mbr程序，mbr程序会通过446+1字节的位置读取64字节的分区表，并在boot标志的分区上加载bootload，一般会使grub、lilo。UEFI引导的情况下，UEFI会直接到GPT分区的fat文件系统下找到efi的引导文件并加载，这个文件会加载grub或者其他引导（lilo是否支持有待验证）。grub本身是一个缩减版的内核，grub本身会包含stage1，stage1.5，stage2 三步。它通过kernel指令加载kernel(grub2是linux指令) vmlinuz文件并传递给内核启动参数，通过initrd指令加载ram disk文件，然后内核就被加载进内存中运行了。
 efi启动模式下的boot目录如下图：  
 ![boot](http://docs.cnsworder.com/publication/image/boot_2.png)  
 bios启动模式下的boot目录如下图：  
@@ -47,7 +47,7 @@ grub加载的配置如下图:
 ##### 早期init 系统简介
 在内核所有的操作完成以后就会从根文件系统中加载地一个要执行的程序，他是所有程序的父进程，也是我们今天的主角**init**。恩，前面的废话太多了，现在才进入正题...
 
-init的历史很久远，早期Linux使用的init有两个版本：`sysV`和`BSD`。现在他们仍旧没有完全被废弃，现在还有不少发行版本采用这两个系统比如dibian还采用system V init,archlinux在20jenk12年前后才放弃BSD init切换到systemd。废话不多说，分别描述一下。
+init的历史很久远，早期Linux使用的init有两个版本：`sysV`和`BSD`。现在他们仍旧没有完全被废弃，现在还有不少发行版本采用这两个系统比如debian还采用system V init，archlinux在2012年前后才放弃BSD init切换到systemd。废话不多说，分别描述一下。
 
 + BSD
        - 使用/etc目录下以rc.x作为文件名的文件来描述init的操作
@@ -136,19 +136,19 @@ systemd和upstart在这种情况下产生了，他们都是事件驱动的，不
                   --维基百科
 
 systemctl来管理systemd，同时也兼容service命令
-所有的systemd配置在`/usr/lib/systemd`目录下,当启动用后会被链接或者拷贝到/etc/systemd目录下
+所有的systemd配置在`/usr/lib/systemd`目录下，当启动用后会被链接或者拷贝到/etc/systemd目录下
 
 + upstart
   - 使用initctl来管理upstart
   - 配置项在`/etc/init/`目录下
-  - ubuntu中在`/etc/rc.conf`的最后一行通过`exec /etc/init.d/rc $RUNLEVEL`来启动相应级别系统，debina中是在`/etc/inittab`中添加`id:2:initdefault:`
+  - ubuntu中在`/etc/rc.conf`的最后一行通过`exec /etc/init.d/rc $RUNLEVEL`来启动相应级别系统，debian中是在`/etc/inittab`中添加`id:2:initdefault:`
 
   *我印象中ubuntu的upstart的配置和centos的配置方法是有区别的，这里无法进一步验证。*
 
 
 ##### systemd和upstart的使用
 
-先分别上一段代码,sytemd：
+先分别上一段代码，systemd：
 
 ```conf
 [Unit]
@@ -193,7 +193,7 @@ upstart和systemd是全新的方式，upstart是命令的方式，systemd则是c
 + 运行级别也通过systemd来进行管理
 
 ###### upstart
-+ 通过`start on runlevel [012345]`和`stop on runlevel [!RUNLEVEL]`来制定具体运行级别
++ 通过`start on runlevel [012345]`和`stop on runlevel [!RUNLEVEL]`来指定具体运行级别
 + 通过`exec`来运行相应的程序
 + 通过`script ... end script`指令可以直接嵌入脚本
 
@@ -201,7 +201,7 @@ upstart和systemd是全新的方式，upstart是命令的方式，systemd则是c
 
 我们可以通过`--init=xxx`内核参数来指定所使用的init系统。当然指定的这个init可以是任意的程序，你完全可以直接指定成为你想要的任何程序。
 
-目前大部分Linux发行版本都已经采用systemd作为默认的init系统，ubuntu现在使用的是upstart系统，而Debain也在投票的结果是选择了systemd，ubuntu也宣布会接受debian的上游选择决定。
+目前大部分Linux发行版本都已经采用systemd作为默认的init系统，ubuntu现在使用的是upstart系统，而Debian也在投票的结果是选择了systemd，ubuntu也宣布会接受debian的上游选择决定。
 
 貌似现在systemd有统一Linux世界init系统的趋势。
 
@@ -217,7 +217,7 @@ upstart和systemd是全新的方式，upstart是命令的方式，systemd则是c
 
 看了郎中撰写的flask的东东，我觉得我有点太钻牛角尖，非常想把web.py弄明白，但是并没有把web.py用好，这一次我的希望这次的web.py可以作为web.py三部曲（核心逻辑，如何使用，写一个凑合的web程序）的承上启下的内容。
 
-web.py里边包含着几个通用的概念HTTPServer，HTTPRequest，HTTPConnection，GateWay.这些概念在所有的server都会出现。
+web.py里边包含着几个通用的概念HTTPServer，HTTPRequest，HTTPConnection，GateWay。这些概念在所有的server都会出现。
 
 * HTTPServer是web.py的大管家，创建套接字，建立线程池，处理http header，返回http状态和页面。
 * HTTPConnection在服务器上，意味着client，他就是client的代表。web.py非常形象的使用了一个方法communicate，体现了两者之间的关系。
@@ -314,7 +314,7 @@ $:form.render()
 
 ``` python
     5$$       $#我显示的是5dollar   ```
-
+```
 * 注释
 
 ``` python 
@@ -379,7 +379,7 @@ github上的说明是:
 
 flask目前发布的最新版本是0.10。flask是开源项目托管在github上的，如果有兴趣可以直接git代码，地址是: <https://github.com/mitsuhiko/flask>。
 
-flask的对外部的依赖很少，只需要Werkzeug,Jinja2,itsdangerours三个库，在setup.py文件中有定义:
+flask的对外部的依赖很少，只需要Werkzeug，Jinja2，itsdangerours三个库，在setup.py文件中有定义:
 
 ```python
 install_requires=[
