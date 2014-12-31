@@ -156,7 +156,7 @@ Makefile和CMake
 
 我们已经了解Makefile，怎么去写Makefile。而Makefile有一个重大的缺陷，Makefile也要维护，而程序员是懒惰的。为了更好的维护Makefile，程序员们用不同的方法简化Makefile的维护，降低编译的难度。    
 
-automake是\*nix上原生的生成makefile的工具。但是可惜automake怪异的使用方法，阻止了我使用它，当时我宁愿写Makefile，所以我不会使用automake，你有兴趣的话可以自己研究一下。(在一个开源工程中，我的确是些了Makefile，而没有使用automake)    
+automake是\*nix上原生的生成makefile的工具。但是可惜automake怪异的使用方法，阻止了我使用它，当时我宁愿写Makefile，所以我不会使用automake，你有兴趣的话可以自己研究一下。(在一个开源工程中，我的确是写了Makefile，而没有使用automake)    
 CMake的作用是生成Makefile或者特定的IDE工程，它极大解决编译源码的跨平台问题。原来越多的软件使用CMake作为构建系统。Qt，OSG，OGRE, opencv。强大的CMake可以使他们非常轻易的在Mac，\*nix，windows上进行编译。以前我不知道，但是在windows上，我编译过完整的Qt，OSG，OGRE，非常简单，点点按钮的事情（一般编译教程，重点在于解决你的库依赖）。 
 
 上边Makefile的例子，使用CMake简直太简单了。定义输入，输出，设置一些环境变量就可以了，甚至不用设置环境变量。
